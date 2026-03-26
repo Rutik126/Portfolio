@@ -49,14 +49,14 @@ const HeroSection = memo(function HeroSection() {
       <HireMeButton />
         <p
           ref={introRef}
-          className="absolute left-1/4 top-[450px] z-30 w-[min(600px,calc(100%-48px))] -translate-x-1/2 text-center text-[24px] font-medium tracking-[-0.01em] text-[#666666] md:w-[700px]"
+          className="absolute left-[22%] top-[58%] z-30 max-w-[420px] -translate-y-1/2 text-left text-[clamp(16px,1.2vw,20px)] font-medium tracking-[-0.01em] text-[#666666]"
         >
           {heroContent.introLine}
         </p>
 
         <div
           ref={headingRef}
-          className="absolute inset-x-0 top-[34%] z-10 -translate-y-1/2 px-6 md:top-[28%] md:px-8 xl:px-16"
+          className="absolute inset-x-0 top-[36%] z-10 -translate-y-1/2 px-6 md:top-[28%] md:px-8 xl:px-16"
         >
           <div className="mx-auto max-w-[1480px]">
             <div className="relative z-30 text-center text-[clamp(42px,10vw,72px)] font-extrabold leading-[0.9] tracking-[-0.06em] text-[#0F0F0F] md:text-[clamp(72px,9vw,160px)]">
@@ -104,7 +104,7 @@ const HeroSection = memo(function HeroSection() {
           href="/Rutik-Kumbhar-Resume.pdf"
           download="Rutik-Resume.pdf"
           data-cursor="interactive"
-          className="absolute bottom-[180px] left-1/3 z-30 inline-flex -translate-x-1/2 items-center rounded-full bg-[#111111] px-[24px] py-[12px] text-[18px] font-medium text-white transition-colors duration-300 hover:bg-[#FFD600] hover:text-black md:left-[360px] md:translate-x-0"
+          className="absolute left-[5%] top-[80%] z-30 inline-flex items-center rounded-full bg-[#111111] px-[22px] py-[12px] text-[16px] font-medium text-white transition-all duration-300 hover:bg-[#FFD600] hover:text-black"
         >
           Download Resume
         </a>

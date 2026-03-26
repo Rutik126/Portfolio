@@ -79,14 +79,14 @@ const ContactSection = memo(function ContactSection() {
       id="contact"
       className="relative z-[60] -mt-[10vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(135deg,#4f4870_0%,#2f2c48_48%,#0e1118_100%)] px-6 pb-40 pt-12 md:px-8 xl:px-16"
     >
-      <SectionChrome
+      {/* <SectionChrome
         label="CONTACT"
         transition="linear-gradient(180deg, rgba(9,10,17,0) 0%, rgba(60,58,96,0.24) 42%, rgba(79,72,112,0.92) 100%)"
         tone="dark"
-      />
+      /> */}
       <div
         ref={blobRef}
-        className="absolute right-[-10%] top-[18%] h-[420px] w-[420px] rounded-full opacity-35 blur-3xl"
+        className="absolute right-[-10%] top-[4%] h-[420px] w-[420px] rounded-full opacity-35 blur-3xl"
         style={{
           background:
             'radial-gradient(circle, rgba(255,70,83,0.42) 0%, rgba(82,255,177,0.26) 44%, rgba(76,113,255,0.28) 76%, transparent 100%)',
@@ -97,11 +97,11 @@ const ContactSection = memo(function ContactSection() {
         className="absolute inset-y-0 right-0 w-[38%] opacity-20 [background-image:radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:18px_18px]"
       />
 
-      <div className="relative mx-auto grid max-w-[1200px] gap-12 md:grid-cols-2">
+      <div className="relative mx-auto grid max-w-[1200px] top-[18vh] gap-12 md:grid-cols-2">
         <div className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[rgba(234,234,240,0.68)]">
+          {/* <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[rgba(234,234,240,0.68)]">
             Contact
-          </p>
+          </p> */}
           <h2 className="mt-6 text-[clamp(3.5rem,7vw,6rem)] font-bold leading-[0.95] text-white">
             Get in touch
           </h2>

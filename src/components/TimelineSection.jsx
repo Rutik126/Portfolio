@@ -240,13 +240,13 @@ const TimelineSection = memo(function TimelineSection() {
     <section
       id="timeline"
       ref={sectionRef}
-      className="relative z-30 -mt-[20vh] rounded-t-[32px] bg-[#080910] px-6 pb-28 pt-32 md:px-8 xl:px-16"
+      className="relative z-30 -mt-[32vh] rounded-t-[32px] bg-[#080910] px-6 pb-28 pt-2 md:px-8 xl:px-16"
     >
-      <SectionChrome
+      {/* <SectionChrome
         label="EXPERIENCE"
         transition="linear-gradient(180deg, rgba(245,245,245,0) 0%, rgba(171,171,171,0.18) 38%, rgba(8,9,16,0.96) 100%)"
         tone="dark"
-      />
+      /> */}
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
 
       <div className="relative mx-auto grid max-w-[1200px] gap-12 md:grid-cols-[32%_68%]">
