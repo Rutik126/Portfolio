@@ -1,25 +1,24 @@
 export const navItems = [
-  { label: 'About', href: '#timeline' },
+  { label: 'About', href: '#hero' },
+  { label: 'Experience', href: '#timeline' },
   { label: 'Projects', href: '#projects' },
   { label: 'Articles', href: '#articles' },
   { label: 'Contact', href: '#contact' },
 ]
 
-export const heroCards = {
-  intro: {
-    eyebrow: 'Design + Engineering',
-    title: 'UI/UX Designer & Developer',
-    body: 'I design high-impact digital products with strong UX thinking, clean UI systems, and measurable business results.',
-  },
-  skills: {
-    eyebrow: 'Capabilities',
-    items: [
-      'UX Strategy',
-      'Interaction Design',
-      'Frontend Systems',
-      'Motion Design',
-    ],
-  },
+export const headerSections = [
+  { id: 'hero', theme: 'light' },
+  { id: 'timeline', theme: 'dark' },
+  { id: 'projects', theme: 'light' },
+  { id: 'articles', theme: 'dark' },
+  { id: 'contact', theme: 'dark' },
+]
+
+export const heroContent = {
+  introLine: 'Delivers high-impact digital products through data-driven UX, modern UI, and strong product thinking, focusing on scalable solutions, seamless user journeys, and measurable business outcomes.',
+  primaryTitle: 'UI/UX Designer',
+  secondaryTitle: '& Developer',
+  location: 'based in India',
 }
 
 export const milestones = [
@@ -32,16 +31,15 @@ export const milestones = [
     date: 'Jan 2025',
     title: 'Internship begins',
     body: 'Started my UI/UX internship at GTT Data Solutions, translating design decisions into production-ready interfaces and clearer user flows.',
-  },
-  {
-    date: 'Apr 2025',
-    title: 'Full-time transition',
-    body: 'Stepped into a full-time UI/UX Designer role, shaping product systems with stronger consistency, interaction quality, and visual discipline.',
+  },{
+    date: 'May 2025',
+    title: 'Certified engineer',
+    body: 'Graduated with an A grade, bringing together design sensibility, engineering rigor, and a sharper systems mindset.',
   },
   {
     date: 'Jun 2025',
-    title: 'Certified engineer',
-    body: 'Graduated with an A grade, bringing together design sensibility, engineering rigor, and a sharper systems mindset.',
+    title: 'Full-time transition',
+    body: 'Stepped into a full-time UI/UX Designer role, shaping product systems with stronger consistency, interaction quality, and visual discipline.',
   },
 ]
 

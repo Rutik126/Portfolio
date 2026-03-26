@@ -1,15 +1,17 @@
 import { useEffect, useRef } from 'react'
 
 function CustomCursor() {
-  const haloRef = useRef(null)
+  const glowRef = useRef(null)
   const trailRef = useRef(null)
   const orbRef = useRef(null)
   const target = useRef({ x: 0, y: 0 })
+  const trailTarget = useRef({ x: 0, y: 0 })
+  const historyRef = useRef([])
   const primaryPosition = useRef({ x: 0, y: 0 })
   const secondaryPosition = useRef({ x: 0, y: 0 })
-  const primaryScale = useRef(1)
-  const secondaryScale = useRef(1)
-  const glowScale = useRef(1)
+  const primarySize = useRef(20)
+  const secondarySize = useRef(12)
+  const glowSize = useRef(56)
   const isInteractive = useRef(false)
   const isVisible = useRef(false)
   const hasInitialized = useRef(false)
@@ -19,14 +21,22 @@ function CustomCursor() {
       return undefined
     }
 
+    const interactiveSelector =
+      'a, button, input, textarea, [data-cursor="magnetic"], [data-cursor="interactive"]'
+
     const onMove = (event) => {
       const nextPoint = { x: event.clientX, y: event.clientY }
+      const now = performance.now()
+
       target.current = nextPoint
+      historyRef.current.push({ ...nextPoint, time: now })
+      historyRef.current = historyRef.current.filter((entry) => now - entry.time <= 140)
 
       if (!hasInitialized.current) {
         hasInitialized.current = true
         primaryPosition.current = nextPoint
         secondaryPosition.current = nextPoint
+        trailTarget.current = nextPoint
       }
 
       isVisible.current = true
@@ -41,18 +51,16 @@ function CustomCursor() {
     }
 
     const onPointerOver = (event) => {
-      if (event.target.closest('a, button, input, textarea, [data-cursor="magnetic"]')) {
+      if (event.target.closest(interactiveSelector)) {
         isInteractive.current = true
       }
     }
 
     const onPointerOut = (event) => {
-      const currentInteractive = event.target.closest(
-        'a, button, input, textarea, [data-cursor="magnetic"]',
-      )
+      const currentInteractive = event.target.closest(interactiveSelector)
       const nextInteractive =
         event.relatedTarget instanceof Element
-          ? event.relatedTarget.closest('a, button, input, textarea, [data-cursor="magnetic"]')
+          ? event.relatedTarget.closest(interactiveSelector)
           : null
 
       if (currentInteractive && currentInteractive !== nextInteractive) {
@@ -62,36 +70,46 @@ function CustomCursor() {
 
     let rafId = 0
     const animate = () => {
+      const now = performance.now()
+      const delayedPoint =
+        [...historyRef.current].reverse().find((entry) => now - entry.time >= 50) ?? target.current
+
+      trailTarget.current = delayedPoint
+
       primaryPosition.current.x += (target.current.x - primaryPosition.current.x) * 0.12
       primaryPosition.current.y += (target.current.y - primaryPosition.current.y) * 0.12
-      secondaryPosition.current.x += (target.current.x - secondaryPosition.current.x) * 0.05
-      secondaryPosition.current.y += (target.current.y - secondaryPosition.current.y) * 0.05
+      secondaryPosition.current.x += (trailTarget.current.x - secondaryPosition.current.x) * 0.12
+      secondaryPosition.current.y += (trailTarget.current.y - secondaryPosition.current.y) * 0.12
 
-      const targetPrimaryScale = isInteractive.current ? 2.4 : 1
-      const targetSecondaryScale = isInteractive.current ? 1.6 : 1
-      const targetGlowScale = isInteractive.current ? 1.85 : 1
+      const nextPrimarySize = isInteractive.current ? 64 : 28
+      const nextSecondarySize = isInteractive.current ? 28 : 18
+      const nextGlowSize = isInteractive.current ? 120 : 90
 
-      primaryScale.current += (targetPrimaryScale - primaryScale.current) * 0.14
-      secondaryScale.current += (targetSecondaryScale - secondaryScale.current) * 0.08
-      glowScale.current += (targetGlowScale - glowScale.current) * 0.1
+      primarySize.current += (nextPrimarySize - primarySize.current) * 0.16
+      secondarySize.current += (nextSecondarySize - secondarySize.current) * 0.12
+      glowSize.current += (nextGlowSize - glowSize.current) * 0.1
 
-      const primaryTransform = `translate3d(${primaryPosition.current.x}px, ${primaryPosition.current.y}px, 0) translate3d(-50%, -50%, 0)`
-      const secondaryTransform = `translate3d(${secondaryPosition.current.x}px, ${secondaryPosition.current.y}px, 0) translate3d(-50%, -50%, 0)`
       const opacity = isVisible.current ? 1 : 0
 
-      if (haloRef.current) {
-        haloRef.current.style.opacity = `${opacity * 0.9}`
-        haloRef.current.style.transform = `${primaryTransform} scale(${glowScale.current})`
+      if (glowRef.current) {
+        glowRef.current.style.opacity = `${opacity * 0.42}`
+        glowRef.current.style.width = `${glowSize.current}px`
+        glowRef.current.style.height = `${glowSize.current}px`
+        glowRef.current.style.transform = `translate3d(${primaryPosition.current.x - glowSize.current / 2}px, ${primaryPosition.current.y - glowSize.current / 2}px, 0)`
       }
 
       if (trailRef.current) {
-        trailRef.current.style.opacity = `${opacity * 0.3}`
-        trailRef.current.style.transform = `${secondaryTransform} scale(${secondaryScale.current})`
+        trailRef.current.style.opacity = `${opacity * 0.34}`
+        trailRef.current.style.width = `${secondarySize.current}px`
+        trailRef.current.style.height = `${secondarySize.current}px`
+        trailRef.current.style.transform = `translate3d(${secondaryPosition.current.x - secondarySize.current / 2}px, ${secondaryPosition.current.y - secondarySize.current / 2}px, 0)`
       }
 
       if (orbRef.current) {
         orbRef.current.style.opacity = `${opacity}`
-        orbRef.current.style.transform = `${primaryTransform} scale(${primaryScale.current})`
+        orbRef.current.style.width = `${primarySize.current}px`
+        orbRef.current.style.height = `${primarySize.current}px`
+        orbRef.current.style.transform = `translate3d(${primaryPosition.current.x - primarySize.current / 2}px, ${primaryPosition.current.y - primarySize.current / 2}px, 0)`
       }
 
       rafId = requestAnimationFrame(animate)
@@ -117,30 +135,29 @@ function CustomCursor() {
   return (
     <>
       <div
-        ref={haloRef}
-        className="pointer-events-none fixed left-0 top-0 z-[119] hidden h-12 w-12 rounded-full opacity-0 mix-blend-screen lg:block"
+        ref={glowRef}
+        className="pointer-events-none fixed left-0 top-0 z-[119] hidden rounded-full opacity-0 lg:block"
         style={{
           background:
-            'radial-gradient(circle, rgba(255,214,0,0.22) 0%, rgba(103,95,236,0.2) 48%, rgba(92,112,255,0.04) 72%, rgba(92,112,255,0) 100%)',
-          filter: 'blur(20px)',
+            'radial-gradient(circle, rgba(255,214,0,0.45) 0%, rgba(255,214,0,0.18) 44%, rgba(255,214,0,0) 100%)',
+          filter: 'blur(22px)',
         }}
       />
       <div
         ref={trailRef}
-        className="pointer-events-none fixed left-0 top-0 z-[120] hidden h-5 w-5 rounded-full lg:block"
+        className="pointer-events-none fixed left-0 top-0 z-[120] hidden rounded-full opacity-0 lg:block"
         style={{
           background:
-            'radial-gradient(circle at 30% 30%, rgba(255,244,184,0.55) 0%, rgba(119,131,255,0.34) 55%, rgba(84,109,255,0.08) 100%)',
-          boxShadow: '0 0 18px rgba(118, 125, 255, 0.22)',
+            'radial-gradient(circle at 35% 35%, rgba(255,247,204,0.82) 0%, rgba(255,214,0,0.38) 60%, rgba(255,214,0,0.08) 100%)',
         }}
       />
       <div
         ref={orbRef}
-        className="pointer-events-none fixed left-0 top-0 z-[121] hidden h-5 w-5 rounded-full lg:block"
+        className="pointer-events-none fixed left-0 top-0 z-[121] hidden rounded-full opacity-0 lg:block"
         style={{
           background:
-            'radial-gradient(circle at 30% 30%, rgba(255,236,160,1) 0%, rgba(119,131,255,0.94) 48%, rgba(84,109,255,0.18) 100%)',
-          boxShadow: '0 0 24px rgba(118, 125, 255, 0.4)',
+            'radial-gradient(circle at 35% 35%, rgba(255,247,204,0.82) 0%, rgba(255,214,0,0.94) 54%, rgba(255,196,0,0.9) 100%)',
+          boxShadow: '0 0 40px rgba(255, 214, 0, 0.18)',
         }}
       />
     </>

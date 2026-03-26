@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import * as THREE from 'three'
 import { projects } from '../content/siteContent'
 import { Card } from './ui/card'
+import SectionChrome from './SectionChrome'
 import { useAnimationStore } from '../store/animationStore'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -83,12 +84,12 @@ const ProjectsSection = memo(function ProjectsSection() {
         .fromTo(
           card,
           {
-            yPercent: 18,
-            scale: 0.35,
-            opacity: 0,
-            rotateX: 16,
-            rotateY: index % 2 === 0 ? -12 : 12,
-            z: -220,
+            yPercent: 10,
+            scale: 0.72,
+            opacity: 0.18,
+            rotateX: 8,
+            rotateY: index % 2 === 0 ? -6 : 6,
+            z: -120,
           },
           {
             yPercent: 0,
@@ -104,22 +105,22 @@ const ProjectsSection = memo(function ProjectsSection() {
         .to(
           card,
           {
-            yPercent: -16,
-            scale: 0.24,
-            opacity: 0,
-            rotateX: -10,
-            z: -280,
+            yPercent: -10,
+            scale: 0.78,
+            opacity: 0.24,
+            rotateX: -4,
+            z: -160,
             ease: 'none',
           },
-          0.62,
+          0.64,
         )
         .fromTo(
           title,
-          { scale: 1, opacity: 0.12, filter: 'blur(12px)' },
-          { scale: 1.4, opacity: 0.36, filter: 'blur(3px)', ease: 'none' },
+          { scale: 0.94, opacity: 0.08, filter: 'blur(16px)' },
+          { scale: 1.08, opacity: 0.16, filter: 'blur(8px)', ease: 'none' },
           0,
         )
-        .to(title, { scale: 2.8, opacity: 0.75, filter: 'blur(0px)', ease: 'none' }, 0.62)
+        .to(title, { scale: 1.24, opacity: 0.28, filter: 'blur(2px)', ease: 'none' }, 0.64)
     })
 
     return () => animations.forEach((animation) => {
@@ -139,9 +140,9 @@ const ProjectsSection = memo(function ProjectsSection() {
     const y = (event.clientY - bounds.top) / bounds.height - 0.5
 
     gsap.to(card, {
-      rotateY: x * 10,
-      rotateX: -y * 10,
-      duration: 0.6,
+      rotateY: x * 7,
+      rotateX: -y * 7,
+      duration: 0.5,
       ease: 'power3.out',
       overwrite: true,
     })
@@ -152,7 +153,7 @@ const ProjectsSection = memo(function ProjectsSection() {
       gsap.fromTo(
         sweepRefs.current[index],
         { xPercent: -140 },
-        { xPercent: 160, duration: 0.9, ease: 'power3.out', overwrite: true },
+        { xPercent: 160, duration: 0.8, ease: 'power3.out', overwrite: true },
       )
     }
   }
@@ -171,8 +172,13 @@ const ProjectsSection = memo(function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative z-40 -mt-[24vh] overflow-hidden rounded-t-[24px] bg-[linear-gradient(180deg,#d6e2f1_0%,#dfe8f3_32%,#bdcde0_58%,#090d15_100%)] px-6 py-24 md:px-8 xl:px-16"
+      className="relative z-40 -mt-[20vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(180deg,#d6e2f1_0%,#e6edf5_28%,#c7d5e2_58%,#090d15_100%)] px-6 pb-28 pt-32 md:px-8 xl:px-16"
     >
+      <SectionChrome
+        label="PROJECTS"
+        transition="linear-gradient(180deg, rgba(8,9,16,0) 0%, rgba(163,177,191,0.18) 42%, rgba(214,226,241,0.94) 100%)"
+        tone="light"
+      />
       <div className="pointer-events-none absolute inset-0">
         <Canvas camera={{ position: [0, 0, 8], fov: 42 }}>
           <CloudField />
@@ -213,7 +219,7 @@ const ProjectsSection = memo(function ProjectsSection() {
                 }}
                 className="[transform-style:preserve-3d]"
               >
-                <Card className="overflow-hidden border-white/30 bg-white/[0.48] text-[#162033] shadow-[0_30px_90px_rgba(10,14,28,0.18)]">
+                <Card className="overflow-hidden border-white/30 bg-white/[0.54] text-[#162033] shadow-[0_30px_90px_rgba(10,14,28,0.16)]">
                   <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#324361]">
                     {project.tag}
                   </p>

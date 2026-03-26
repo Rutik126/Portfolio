@@ -13,27 +13,10 @@ export function useLenisController() {
 }
 
 function SmoothScrollProvider({ children }) {
-  const wrapperRef = useRef(null)
-  const contentRef = useRef(null)
   const lenisRef = useRef(null)
 
   useLayoutEffect(() => {
-    const wrapper = wrapperRef.current
-    const content = contentRef.current
-
-    if (!wrapper || !content) {
-      return undefined
-    }
-
-    const previousHtmlOverflow = document.documentElement.style.overflow
-    const previousBodyOverflow = document.body.style.overflow
-
-    document.documentElement.style.overflow = 'hidden'
-    document.body.style.overflow = 'hidden'
-
     const lenis = new Lenis({
-      wrapper,
-      content,
       duration: 1.2,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
@@ -44,27 +27,6 @@ function SmoothScrollProvider({ children }) {
 
     lenisRef.current = lenis
 
-    ScrollTrigger.scrollerProxy(wrapper, {
-      scrollTop(value) {
-        if (arguments.length) {
-          lenis.scrollTo(Number(value), { duration: 0, immediate: true })
-        }
-
-        return lenis.scroll
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        }
-      },
-      pinType: wrapper.style.transform ? 'transform' : 'fixed',
-    })
-
-    ScrollTrigger.defaults({ scroller: wrapper })
-
     const ticker = (time) => {
       lenis.raf(time * 1000)
     }
@@ -74,9 +36,7 @@ function SmoothScrollProvider({ children }) {
       ScrollTrigger.update()
     }
 
-    const refresh = () => {
-      lenis.resize()
-    }
+    const refresh = () => lenis.resize()
 
     lenis.on('scroll', onLenisScroll)
     ScrollTrigger.addEventListener('refresh', refresh)
@@ -90,11 +50,8 @@ function SmoothScrollProvider({ children }) {
     return () => {
       ScrollTrigger.removeEventListener('refresh', refresh)
       gsap.ticker.remove(ticker)
-      ScrollTrigger.defaults({})
       lenis.destroy()
       lenisRef.current = null
-      document.documentElement.style.overflow = previousHtmlOverflow
-      document.body.style.overflow = previousBodyOverflow
     }
   }, [])
 
@@ -107,11 +64,7 @@ function SmoothScrollProvider({ children }) {
 
   return (
     <LenisContext.Provider value={contextValue}>
-      <div ref={wrapperRef} className="lenis-shell h-screen">
-        <div ref={contentRef} data-lenis-content>
-          {children}
-        </div>
-      </div>
+      {children}
     </LenisContext.Provider>
   )
 }

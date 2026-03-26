@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ArrowUpRight, Dribbble, Linkedin, Mail } from 'lucide-react'
 import { contacts } from '../content/siteContent'
 import { Card } from './ui/card'
+import SectionChrome from './SectionChrome'
 
 const socials = [
   { icon: Dribbble, label: 'Dribbble' },
@@ -18,10 +19,10 @@ const ContactSection = memo(function ContactSection() {
 
   useEffect(() => {
     const blob = gsap.to(blobRef.current, {
-      x: 80,
-      y: -40,
-      scale: 1.18,
-      duration: 12,
+      x: 48,
+      y: -18,
+      scale: 1.08,
+      duration: 14,
       repeat: -1,
       yoyo: true,
       ease: 'sine.inOut',
@@ -29,7 +30,7 @@ const ContactSection = memo(function ContactSection() {
 
     const dots = gsap.to(dotsRef.current, {
       backgroundPosition: '40px 40px',
-      duration: 16,
+      duration: 18,
       repeat: -1,
       ease: 'none',
     })
@@ -76,8 +77,13 @@ const ContactSection = memo(function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative z-[60] -mt-[24vh] overflow-hidden rounded-t-[24px] bg-[linear-gradient(135deg,#675FEC_0%,#413E5C_100%)] px-6 py-24 md:px-8 xl:px-16"
+      className="relative z-[60] -mt-[10vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(135deg,#4f4870_0%,#2f2c48_48%,#0e1118_100%)] px-6 pb-40 pt-12 md:px-8 xl:px-16"
     >
+      <SectionChrome
+        label="CONTACT"
+        transition="linear-gradient(180deg, rgba(9,10,17,0) 0%, rgba(60,58,96,0.24) 42%, rgba(79,72,112,0.92) 100%)"
+        tone="dark"
+      />
       <div
         ref={blobRef}
         className="absolute right-[-10%] top-[18%] h-[420px] w-[420px] rounded-full opacity-35 blur-3xl"

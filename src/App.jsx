@@ -1,18 +1,12 @@
-import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
+import HireMeButton from './components/HireMeButton'
 import CustomCursor from './components/CustomCursor'
 import SmoothScrollProvider from './providers/SmoothScrollProvider'
-
-const BreakSection = lazy(() => import('./components/BreakSection'))
-const TimelineSection = lazy(() => import('./components/TimelineSection'))
-const ProjectsSection = lazy(() => import('./components/ProjectsSection'))
-const ArticlesSection = lazy(() => import('./components/ArticlesSection'))
-const ContactSection = lazy(() => import('./components/ContactSection'))
-
-function SectionFallback() {
-  return <div className="h-16 w-full" />
-}
+import TimelineSection from './components/TimelineSection'
+import ProjectsSection from './components/ProjectsSection'
+import ArticlesSection from './components/ArticlesSection'
+import ContactSection from './components/ContactSection'
 
 function App() {
   return (
@@ -20,23 +14,12 @@ function App() {
       <div className="relative overflow-x-clip bg-[#090910] text-[rgba(234,234,240,0.9)]">
         <CustomCursor />
         <Navbar />
-        <main className="relative">
+        <main className="relative isolate">
           <HeroSection />
-          <Suspense fallback={<SectionFallback />}>
-            <BreakSection />
-          </Suspense>
-          <Suspense fallback={<SectionFallback />}>
-            <TimelineSection />
-          </Suspense>
-          <Suspense fallback={<SectionFallback />}>
-            <ProjectsSection />
-          </Suspense>
-          <Suspense fallback={<SectionFallback />}>
-            <ArticlesSection />
-          </Suspense>
-          <Suspense fallback={<SectionFallback />}>
-            <ContactSection />
-          </Suspense>
+          <TimelineSection />
+          <ProjectsSection />
+          <ArticlesSection />
+          <ContactSection />
         </main>
       </div>
     </SmoothScrollProvider>
