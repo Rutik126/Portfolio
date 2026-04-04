@@ -7,9 +7,17 @@ import { Card } from './ui/card'
 import SectionChrome from './SectionChrome'
 
 const socials = [
-  { icon: Dribbble, label: 'Dribbble' },
-  { icon: Linkedin, label: 'LinkedIn' },
-  { icon: Mail, label: 'Email' },
+  { icon: Dribbble, label: 'Dribbble', href: 'https://hype4.academy/profile/Ruthik' },
+  {
+    icon: Linkedin,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/rutik-kumbhar-84862626a/',
+  },
+  {
+    icon: Mail,
+    label: 'Email',
+    href: 'mailto:ruthikkumbhar@gmail.com',
+  },
 ]
 
 const ContactSection = memo(function ContactSection() {
@@ -126,7 +134,9 @@ const ContactSection = memo(function ContactSection() {
               return (
                 <motion.a
                   key={social.label}
-                  href="#contact"
+                  href={social.href}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noreferrer' : undefined}
                   whileHover={{ scale: 1.05, boxShadow: '0 0 32px rgba(255,214,0,0.28)' }}
                   ref={(element) => {
                     iconRefs.current[index] = element
@@ -143,14 +153,14 @@ const ContactSection = memo(function ContactSection() {
             })}
           </div>
 
-          <motion.a
+          {/* <motion.a
             href="mailto:hello@portfolio.dev"
             whileHover={{ x: 6 }}
             className="mt-4 inline-flex items-center gap-3 text-sm font-medium text-[rgba(234,234,240,0.88)]"
           >
             Open conversation
             <ArrowUpRight size={16} />
-          </motion.a>
+          </motion.a> */}
         </Card>
       </div>
     </section>

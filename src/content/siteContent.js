@@ -186,7 +186,7 @@ export const articles = [
 ]
 
 export const contacts = [
-  { label: 'Address', value: 'Kolhapur, Maharashtra, India' },
-  { label: 'Phone', value: '+91 98765 43210' },
-  { label: 'Email', value: 'hello@portfolio.dev' },
+  { label: 'Address', value: 'Sangli, Maharashtra, India' },
+  { label: 'Phone', value: '+91 8799884560' },
+  { label: 'Email', value: 'ruthikkumbhar@gmail.com' },
 ]
