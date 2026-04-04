@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
@@ -66,70 +66,120 @@ const ProjectsSection = memo(function ProjectsSection() {
   const titleRefs = useRef([])
   const sweepRefs = useRef([])
   const setProjectIndex = useAnimationStore((state) => state.setProjectIndex)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const animations = stepRefs.current.map((step, index) => {
-      const card = cardRefs.current[index]
-      const title = titleRefs.current[index]
-      return gsap.timeline({
-        scrollTrigger: {
-          trigger: step,
-          start: 'top 85%',
-          end: 'bottom 20%',
-          scrub: true,
-          onEnter: () => setProjectIndex(index),
-          onEnterBack: () => setProjectIndex(index),
-        },
+    const mm = gsap.matchMedia()
+
+    mm.add('(min-width: 768px)', () => {
+      setIsMobile(false)
+
+      const animations = stepRefs.current.map((step, index) => {
+        const card = cardRefs.current[index]
+        const title = titleRefs.current[index]
+        return gsap.timeline({
+          scrollTrigger: {
+            trigger: step,
+            start: 'top 85%',
+            end: 'bottom 20%',
+            scrub: true,
+            onEnter: () => setProjectIndex(index),
+            onEnterBack: () => setProjectIndex(index),
+          },
+        })
+          .fromTo(
+            card,
+            {
+              yPercent: 10,
+              scale: 0.72,
+              opacity: 0.18,
+              rotateX: 8,
+              rotateY: index % 2 === 0 ? -6 : 6,
+              z: -120,
+            },
+            {
+              yPercent: 0,
+              scale: 1,
+              opacity: 1,
+              rotateX: 0,
+              rotateY: 0,
+              z: 0,
+              ease: 'none',
+            },
+            0,
+          )
+          .to(
+            card,
+            {
+              yPercent: -10,
+              scale: 0.78,
+              opacity: 0.24,
+              rotateX: -4,
+              z: -160,
+              ease: 'none',
+            },
+            0.64,
+          )
+          .fromTo(
+            title,
+            { scale: 0.94, opacity: 0.08, filter: 'blur(16px)' },
+            { scale: 1.08, opacity: 0.16, filter: 'blur(8px)', ease: 'none' },
+            0,
+          )
+          .to(title, { scale: 1.24, opacity: 0.28, filter: 'blur(2px)', ease: 'none' }, 0.64)
       })
-        .fromTo(
-          card,
-          {
-            yPercent: 10,
-            scale: 0.72,
-            opacity: 0.18,
-            rotateX: 8,
-            rotateY: index % 2 === 0 ? -6 : 6,
-            z: -120,
-          },
-          {
-            yPercent: 0,
-            scale: 1,
-            opacity: 1,
-            rotateX: 0,
-            rotateY: 0,
-            z: 0,
-            ease: 'none',
-          },
-          0,
-        )
-        .to(
-          card,
-          {
-            yPercent: -10,
-            scale: 0.78,
-            opacity: 0.24,
-            rotateX: -4,
-            z: -160,
-            ease: 'none',
-          },
-          0.64,
-        )
-        .fromTo(
-          title,
-          { scale: 0.94, opacity: 0.08, filter: 'blur(16px)' },
-          { scale: 1.08, opacity: 0.16, filter: 'blur(8px)', ease: 'none' },
-          0,
-        )
-        .to(title, { scale: 1.24, opacity: 0.28, filter: 'blur(2px)', ease: 'none' }, 0.64)
+
+      return () => animations.forEach((animation) => {
+        animation.scrollTrigger?.kill()
+        animation.kill()
+      })
     })
 
-    return () => animations.forEach((animation) => {
-      animation.scrollTrigger?.kill()
-      animation.kill()
+    mm.add('(max-width: 767px)', () => {
+      setIsMobile(true)
+
+      const animations = stepRefs.current.map((step, index) => {
+        const card = cardRefs.current[index]
+
+        gsap.set(card, {
+          clearProps: 'x,y,z,rotateX,rotateY',
+        })
+
+        return gsap.fromTo(
+          card,
+          { scale: 0.95, opacity: 0.6 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: step,
+              start: 'left 88%',
+              end: 'center center',
+              containerAnimation: undefined,
+              toggleActions: 'play none none reverse',
+              onEnter: () => setProjectIndex(index),
+              onEnterBack: () => setProjectIndex(index),
+            },
+          },
+        )
+      })
+
+      return () => animations.forEach((animation) => {
+        animation.scrollTrigger?.kill()
+        animation.kill()
+      })
     })
+
+    return () => mm.revert()
   }, [setProjectIndex])
 
   const handleProjectMove = (index, event) => {
+    if (isMobile) {
+      return
+    }
+
     const card = surfaceRefs.current[index]
     if (!card) {
       return
@@ -149,6 +199,10 @@ const ProjectsSection = memo(function ProjectsSection() {
   }
 
   const handleProjectEnter = (index) => {
+    if (isMobile) {
+      return
+    }
+
     if (sweepRefs.current[index]) {
       gsap.fromTo(
         sweepRefs.current[index],
@@ -159,6 +213,10 @@ const ProjectsSection = memo(function ProjectsSection() {
   }
 
   const handleProjectLeave = (index) => {
+    if (isMobile) {
+      return
+    }
+
     if (surfaceRefs.current[index]) {
       gsap.to(surfaceRefs.current[index], {
         rotateX: 0,
@@ -172,34 +230,36 @@ const ProjectsSection = memo(function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative z-40 -mt-[20vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(180deg,#d6e2f1_0%,#e6edf5_28%,#c7d5e2_58%,#090d15_100%)] px-6 pb-28 pt-32 md:px-8 xl:px-16"
+      className="projects-section relative z-40 -mt-[20vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(180deg,#d6e2f1_0%,#e6edf5_28%,#c7d5e2_58%,#090d15_100%)] px-6 pb-28 pt-32 md:px-8 xl:px-16"
     >
-      <SectionChrome
+      {/* <SectionChrome
         label="PROJECTS"
         transition="linear-gradient(180deg, rgba(8,9,16,0) 0%, rgba(163,177,191,0.18) 42%, rgba(214,226,241,0.94) 100%)"
         tone="light"
       />
-      <div className="pointer-events-none absolute inset-0">
-        <Canvas camera={{ position: [0, 0, 8], fov: 42 }}>
-          <CloudField />
-        </Canvas>
-      </div>
+      {!isMobile ? (
+        <div className="pointer-events-none absolute inset-0">
+          <Canvas camera={{ position: [0, 0, 8], fov: 42 }}>
+            <CloudField />
+          </Canvas>
+        </div>
+      ) : null} */}
 
-      <div className="relative mx-auto max-w-[1200px]">
+      <div className="projects-list relative mx-auto max-w-[1200px]">
         {projects.map((project, index) => (
           <div
             key={project.title}
             ref={(element) => {
               stepRefs.current[index] = element
             }}
-            className="relative flex min-h-screen items-center justify-center"
+            className="project-step relative flex min-h-screen items-center justify-center"
             style={{ perspective: '1600px' }}
           >
             <div
               ref={(element) => {
                 titleRefs.current[index] = element
               }}
-              className="pointer-events-none absolute inset-x-0 text-center text-[clamp(4rem,11vw,11rem)] font-bold uppercase tracking-[0.18em] text-[rgba(32,48,77,0.12)]"
+              className="project-watermark pointer-events-none absolute inset-x-0 text-center text-[clamp(4rem,11vw,11rem)] font-bold uppercase tracking-[0.18em] text-[rgba(32,48,77,0.12)]"
             >
               {project.title}
             </div>
@@ -208,7 +268,7 @@ const ProjectsSection = memo(function ProjectsSection() {
               ref={(element) => {
                 cardRefs.current[index] = element
               }}
-              className="relative w-full max-w-4xl [transform-style:preserve-3d] will-change-transform"
+              className="project-card-shell relative w-full max-w-4xl [transform-style:preserve-3d] will-change-transform"
               onMouseMove={(event) => handleProjectMove(index, event)}
               onMouseEnter={() => handleProjectEnter(index)}
               onMouseLeave={() => handleProjectLeave(index)}
@@ -217,19 +277,19 @@ const ProjectsSection = memo(function ProjectsSection() {
                 ref={(element) => {
                   surfaceRefs.current[index] = element
                 }}
-                className="[transform-style:preserve-3d]"
+                className="project-card-surface [transform-style:preserve-3d]"
               >
-                <Card className="overflow-hidden border-white/30 bg-white/[0.54] text-[#162033] shadow-[0_30px_90px_rgba(10,14,28,0.16)]">
+                <Card className="project-card overflow-hidden border-white/30 bg-white/[0.54] text-[#162033] shadow-[0_30px_90px_rgba(10,14,28,0.16)]">
                   <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#324361]">
                     {project.tag}
                   </p>
                   <h2 className="mt-6 text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95]">
                     {project.title}
                   </h2>
-                  <p className="mt-6 max-w-2xl text-base leading-8 text-[#33425d]">
+                  <p className="project-card-body mt-6 max-w-2xl text-base leading-8 text-[#33425d]">
                     {project.body}
                   </p>
-                  <div className="relative mt-12 h-[360px] overflow-hidden rounded-[24px] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
+                  <div className="project-card-image relative mt-12 h-[360px] overflow-hidden rounded-[24px] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
                     <div className={`absolute inset-0 bg-gradient-to-br ${project.accent}`} />
                     <div
                       ref={(element) => {

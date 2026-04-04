@@ -71,52 +71,110 @@ const TimelineSection = memo(function TimelineSection() {
   const activeIndex = useAnimationStore((state) => state.timelineIndex)
   const setTimelineIndex = useAnimationStore((state) => state.setTimelineIndex)
   const previousIndexRef = useRef(0)
+  const isMobileRef = useRef(false)
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const animations = stepRefs.current.flatMap((step, index) => {
-        if (!step) {
-          return []
-        }
+    const mm = gsap.matchMedia()
 
-        const copy = step.querySelector('[data-copy]')
+    mm.add('(min-width: 768px)', () => {
+      isMobileRef.current = false
 
-        const reveal = gsap.fromTo(
-          copy,
-          { y: 48, opacity: 0.24, filter: 'blur(10px)' },
-          {
-            y: 0,
-            opacity: 1,
-            filter: 'blur(0px)',
-            ease: 'none',
-            scrollTrigger: {
-              trigger: step,
-              start: 'top 68%',
-              end: 'top 42%',
-              scrub: true,
+      const ctx = gsap.context(() => {
+        const animations = stepRefs.current.flatMap((step, index) => {
+          if (!step) {
+            return []
+          }
+
+          const copy = step.querySelector('[data-copy]')
+
+          const reveal = gsap.fromTo(
+            copy,
+            { y: 48, opacity: 0.24, filter: 'blur(10px)' },
+            {
+              y: 0,
+              opacity: 1,
+              filter: 'blur(0px)',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: step,
+                start: 'top 68%',
+                end: 'top 42%',
+                scrub: true,
+              },
             },
-          },
-        )
+          )
 
-        const activation = ScrollTrigger.create({
-          trigger: step,
-          start: 'top 40%',
-          end: 'bottom 40%',
-          onEnter: () => setTimelineIndex(index),
-          onEnterBack: () => setTimelineIndex(index),
+          const activation = ScrollTrigger.create({
+            trigger: step,
+            start: 'top 40%',
+            end: 'bottom 40%',
+            onEnter: () => setTimelineIndex(index),
+            onEnterBack: () => setTimelineIndex(index),
+          })
+
+          return [reveal, activation]
         })
 
-        return [reveal, activation]
-      })
+        return () =>
+          animations.forEach((animation) => {
+            animation.scrollTrigger?.kill?.()
+            animation.kill?.()
+          })
+      }, sectionRef)
 
-      return () =>
-        animations.forEach((animation) => {
-          animation.scrollTrigger?.kill?.()
-          animation.kill?.()
+      return () => ctx.revert()
+    })
+
+    mm.add('(max-width: 767px)', () => {
+      isMobileRef.current = true
+
+      const ctx = gsap.context(() => {
+        const animations = stepRefs.current.flatMap((step, index) => {
+          if (!step) {
+            return []
+          }
+
+          const copy = step.querySelector('[data-copy]')
+
+          const reveal = gsap.fromTo(
+            copy,
+            { y: 48, opacity: 0.24, filter: 'blur(10px)' },
+            {
+              y: 0,
+              opacity: 1,
+              filter: 'blur(0px)',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: step,
+                start: 'top 68%',
+                end: 'top 42%',
+                scrub: true,
+              },
+            },
+          )
+
+          const activation = ScrollTrigger.create({
+            trigger: step,
+            start: 'top 40%',
+            end: 'bottom 40%',
+            onEnter: () => setTimelineIndex(index),
+            onEnterBack: () => setTimelineIndex(index),
+          })
+
+          return [reveal, activation]
         })
-    }, sectionRef)
 
-    return () => ctx.revert()
+        return () =>
+          animations.forEach((animation) => {
+            animation.scrollTrigger?.kill?.()
+            animation.kill?.()
+          })
+      }, sectionRef)
+
+      return () => ctx.revert()
+    })
+
+    return () => mm.revert()
   }, [setTimelineIndex])
 
   useEffect(() => {
@@ -134,6 +192,27 @@ const TimelineSection = memo(function TimelineSection() {
 
     const clearCanvas = () => {
       context.clearRect(0, 0, width, height)
+    }
+
+    if (isMobileRef.current) {
+      textNode.textContent = nextDate
+      textNode.style.opacity = '1'
+      textNode.style.filter = 'blur(0px)'
+      textNode.style.transform = 'translateY(0px)'
+      canvas.style.opacity = '0'
+      clearCanvas()
+
+      const fade = gsap.fromTo(
+        textNode,
+        { opacity: 0, y: 10, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: 'power2.out' },
+      )
+
+      previousIndexRef.current = activeIndex
+
+      return () => {
+        fade.kill()
+      }
     }
 
     if (previousDate === nextDate) {
@@ -240,42 +319,44 @@ const TimelineSection = memo(function TimelineSection() {
     <section
       id="timeline"
       ref={sectionRef}
-      className="relative z-30 -mt-[32vh] rounded-t-[32px] bg-[#080910] px-6 pb-28 pt-2 md:px-8 xl:px-16"
+      className="about-section relative z-30 -mt-[32vh] rounded-t-[32px] bg-[#080910] px-6 pb-28 pt-2 md:px-8 xl:px-16"
     >
       {/* <SectionChrome
         label="EXPERIENCE"
         transition="linear-gradient(180deg, rgba(245,245,245,0) 0%, rgba(171,171,171,0.18) 38%, rgba(8,9,16,0.96) 100%)"
         tone="dark"
       /> */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
+      <div className="about-bg-overlay absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
 
-      <div className="relative mx-auto grid max-w-[1200px] gap-12 md:grid-cols-[32%_68%]">
-        <div className="relative">
-          <div className="sticky top-0 left-[10vh] flex min-h-screen items-center">
-            <div ref={stageRef} className="relative h-[180px] w-full max-w-[440px]">
+      <div className="about-grid relative mx-auto grid max-w-[1200px] gap-12 md:grid-cols-[32%_68%]">
+        <div className="about-date-column relative">
+          <div className="about-date-sticky sticky top-0 left-[10vh] flex min-h-screen items-center">
+            <div ref={stageRef} className="about-date-stage relative h-[180px] w-full max-w-[440px]">
               <h2
                 ref={dateTextRef}
-                className="absolute inset-0 flex items-center text-[92px] tracking-[0.08em] text-[rgba(234,234,240,0.92)] font-normal"
+                className="about-date-text absolute inset-0 flex items-center text-[92px] tracking-[0.08em] text-[rgba(234,234,240,0.92)] font-normal"
                 style={{  fontFamily: "'Micro 5', monospace", textShadow: '0 0 18px rgba(94, 90, 90, 0.08)'}}
                 // style={{ transformOrigin: '0% 50%' }}
               >
                 {milestones[0].date}
               </h2>
-              <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-0" />
+              <canvas ref={canvasRef} className="about-date-canvas absolute inset-0 h-full w-full opacity-0" />
             </div>
           </div>
         </div>
 
-        <div className="relative">
+        <div className="about-content-column relative">
           {milestones.map((item, index) => (
             <div
               key={item.date}
               ref={(element) => {
                 stepRefs.current[index] = element
               }}
-              className="timeline-step flex min-h-[88vh] items-center border-t border-white/6 py-20 first:border-t-0"
+              data-index={index}
+              data-year={item.date}
+              className="timeline-step about-step flex min-h-[88vh] items-center border-t border-white/6 py-20 first:border-t-0"
             >
-              <article data-copy className="max-w-3xl">
+              <article data-copy className="about-copy max-w-3xl">
                 <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[rgba(255,214,0,0.8)]">
                   {item.title}
                 </p>

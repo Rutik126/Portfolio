@@ -58,11 +58,11 @@ const ArticlesSection = memo(function ArticlesSection() {
       id="articles"
       className="relative z-50 -mt-[20vh] rounded-t-[32px] bg-[#090a11] px-6 pb-28 pt-32 md:px-8 xl:px-16"
     >
-      <SectionChrome
+      {/* <SectionChrome
         label="ARTICLES"
         transition="linear-gradient(180deg, rgba(214,226,241,0) 0%, rgba(108,119,132,0.2) 42%, rgba(9,10,17,0.96) 100%)"
         tone="dark"
-      />
+      /> */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(255,214,0,0.06),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-16 max-w-2xl">

@@ -1,5 +1,5 @@
-import { useLayoutEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useLayoutEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { headerSections, navItems } from '../content/siteContent'
@@ -36,6 +36,7 @@ function Navbar() {
   const lenisController = useLenisController()
   const [theme, setTheme] = useState(headerSections[0]?.theme ?? 'dark')
   const [activeHref, setActiveHref] = useState('#hero')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -94,8 +95,30 @@ function Navbar() {
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      return undefined
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    const { overflow } = document.body.style
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = overflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMobileMenuOpen])
+
   const handleNavigate = (event, href) => {
     event.preventDefault()
+    setIsMobileMenuOpen(false)
     const target = document.querySelector(href)
     const lenis = lenisController?.getLenis()
 
@@ -112,8 +135,8 @@ function Navbar() {
   const currentTheme = headerThemes[theme]
 
   return (
-    <header className="pointer-events-none fixed left-0 top-0 z-[100] w-full px-6 py-6 md:px-8 xl:px-16">
-      <nav className="pointer-events-auto mx-auto flex w-full max-w-[1480px] items-center justify-between gap-8 pr-[160px] md:pr-[200px]">
+    <header className="site-header pointer-events-none fixed left-0 top-0 z-[100] w-full px-6 py-6 md:px-8 xl:px-16">
+      <nav className="site-header-nav pointer-events-auto mx-auto flex w-full max-w-[1480px] items-center justify-between gap-8 pr-[160px] md:pr-[200px]">
         <a
           href="#hero"
           onClick={(event) => handleNavigate(event, '#hero')}
@@ -123,7 +146,7 @@ function Navbar() {
         </a>
 
         <div
-          className={`flex items-center gap-1 rounded-full border px-2 py-2 transition-[background-color,border-color,color,box-shadow,backdrop-filter] duration-500 max-md:max-w-[calc(100vw-120px)] max-md:overflow-x-auto ${currentTheme.nav}`}
+          className={`site-header-links flex items-center gap-1 rounded-full border px-2 py-2 transition-[background-color,border-color,color,box-shadow,backdrop-filter] duration-500 max-md:max-w-[calc(100vw-120px)] max-md:overflow-x-auto ${currentTheme.nav}`}
         >
           {navItems.map((item) => {
             const isActive = activeHref === item.href
@@ -151,7 +174,69 @@ function Navbar() {
             )
           })}
         </div>
+
+        <button
+          type="button"
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          className={`site-header-toggle pointer-events-auto hidden items-center justify-center rounded-full border p-3 transition-[background-color,border-color,color,box-shadow,backdrop-filter] duration-500 ${currentTheme.brand}`}
+        >
+          <span className="site-header-toggle-lines" aria-hidden="true">
+            <span className={isMobileMenuOpen ? 'translate-y-[6px] rotate-45' : ''} />
+            <span className={isMobileMenuOpen ? 'opacity-0' : ''} />
+            <span className={isMobileMenuOpen ? '-translate-y-[6px] -rotate-45' : ''} />
+          </span>
+        </button>
       </nav>
+
+      <AnimatePresence>
+        {isMobileMenuOpen ? (
+          <motion.div
+            id="mobile-menu"
+            key="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            className="site-header-overlay pointer-events-auto fixed inset-0 flex min-h-screen w-full flex-col bg-[rgba(10,10,14,0.96)] px-6 py-24"
+          >
+            <div className="mx-auto flex w-full max-w-[1480px] justify-end">
+              <button
+                type="button"
+                aria-label="Close menu"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="mx-auto flex w-full max-w-[1480px] flex-1 items-center justify-center">
+              <div className="site-header-overlay-list flex flex-col items-center">
+                {navItems.map((item) => {
+                  const isActive = activeHref === item.href
+
+                  return (
+                    <a
+                      key={`mobile-${item.href}`}
+                      href={item.href}
+                      onClick={(event) => handleNavigate(event, item.href)}
+                      className={`rounded-[20px] px-6 py-4 text-center text-white transition-colors duration-300 ${isActive ? 'text-[#FFD600]' : 'text-white'}`}
+                    >
+                      {item.label}
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   )
 }

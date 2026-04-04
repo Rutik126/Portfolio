@@ -19,7 +19,7 @@ function HireMeButton() {
   }
 
   return (
-    <div className="pointer-events-none absolute right-5 bottom-[100px] z-[110] md:right-14 md:bottom-[60px]">
+    <div className="hero-hire-button pointer-events-none absolute right-5 bottom-[100px] z-[110] md:right-14 md:bottom-[60px]">
       <a
         href="#contact"
         onClick={handleClick}
