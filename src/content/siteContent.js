@@ -15,7 +15,7 @@ export const headerSections = [
 ]
 
 export const heroContent = {
-  introLine: 'Delivers high-impact digital products through data-driven UX, modern UI, and strong product thinking, focusing on scalable solutions, seamless user journeys, and measurable business outcomes.',
+  introLine: 'I’m Rutik Kumbhar, a UI/UX Designer focused on solving real-world problems through intuitive digital experiences. I enjoy turning complex ideas into simple, user-friendly solutions.',
   primaryTitle: 'UI/UX Designer',
   secondaryTitle: '& Developer',
   location: 'based in India',

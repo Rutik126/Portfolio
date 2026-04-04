@@ -22,6 +22,8 @@ const HeroSection = memo(function HeroSection() {
   const capabilityRef = useRef(null)
   const locationRef = useRef(null)
   const actionsRef = useRef(null)
+  const highlightedName = 'Rutik Kumbhar'
+  const [introBeforeName, introAfterName] = heroContent.introLine.split(highlightedName)
 
   useLayoutEffect(() => {
     const image = new Image()
@@ -90,7 +92,9 @@ const HeroSection = memo(function HeroSection() {
           ref={introRef}
           className="hero-intro absolute left-[5%] top-[58%] z-30 max-w-[420px] -translate-y-1/2 text-left text-[clamp(16px,1.2vw,20px)] font-medium tracking-[-0.01em] text-[#666666]"
         >
-          {heroContent.introLine}
+          {introBeforeName}
+          <span className="font-bold text-[#0F0F0F]">{highlightedName}</span>
+          {introAfterName}
         </p>
 
         <div
