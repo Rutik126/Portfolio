@@ -1,6 +1,7 @@
 import { memo, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { motion } from 'framer-motion'
 import { heroContent } from '../content/siteContent'
 import HireMeButton from './HireMeButton'
 
@@ -14,8 +15,68 @@ const capabilityCardStyles = [
   'bg-[#F4EEE4] text-[#111111] rotate-[5deg] -translate-y-2',
 ]
 
+const toolIcons = [
+  {
+    name: 'Figma',
+    icon: 'https://api.iconify.design/logos:figma.svg',
+    style: { top: '10%', right: '80%' },
+    floatDuration: 5.2,
+    floatDelay: 0,
+  },
+  {
+    name: 'VS Code',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
+    style: { top: '7%', right: '57%' },
+    floatDuration: 4.8,
+    floatDelay: 0.45,
+  },
+  {
+    name: 'Canva',
+    icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg',
+    style: { top: '10%', right: '32%' },
+    floatDuration: 5.7,
+    floatDelay: 0.9,
+  },
+  {
+    name: 'Notion',
+    icon: 'https://api.iconify.design/logos:notion-icon.svg',
+    style: { top: '30%', right: '74%' },
+    floatDuration: 4.6,
+    floatDelay: 0.2,
+  },
+  {
+    name: 'GitHub',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+    style: { top: '45%', right: '60%' },
+    floatDuration: 5.4,
+    floatDelay: 0.75,
+  },
+  {
+    name: 'Superset',
+    icon: 'https://api.iconify.design/logos:apache-superset.svg',
+    style: { top: '44%', right: '32%' },
+    floatDuration: 4.9,
+    floatDelay: 1.15,
+  },
+  {
+    name: 'Framer',
+    icon: 'https://api.iconify.design/logos:framer.svg',
+    style: { top: '37%', right: '22%' },
+    floatDuration: 5.8,
+    floatDelay: 0.35,
+  },
+  {
+    name: 'Photoshop',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg',
+    style: { top: '23%', right: '16%' },
+    floatDuration: 5.1,
+    floatDelay: 1.35,
+  },
+];
+
 const HeroSection = memo(function HeroSection() {
   const sectionRef = useRef(null)
+  const stickyRef = useRef(null)
   const introRef = useRef(null)
   const headingRef = useRef(null)
   const portraitRef = useRef(null)
@@ -86,7 +147,7 @@ const HeroSection = memo(function HeroSection() {
       ref={sectionRef}
       className="hero-section relative min-h-[155vh] overflow-clip bg-[#F5F5F5] text-[#0F0F0F]"
     >
-      <div className="hero-sticky sticky top-0 h-screen overflow-hidden">
+      <div ref={stickyRef} className="hero-sticky sticky top-0 h-screen overflow-hidden">
         <HireMeButton />
         <p
           ref={introRef}
@@ -133,6 +194,51 @@ const HeroSection = memo(function HeroSection() {
               maskImage: 'linear-gradient(to top, transparent 0%, black 30%, black 100%)',
             }}
           />
+        </div>
+
+        <div className="pointer-events-none absolute inset-0 z-[25] hidden md:block opacity-60" aria-hidden="true">
+          {toolIcons.map((tool) => (
+            <motion.div
+              key={tool.name}
+              drag
+              dragConstraints={stickyRef}
+              dragElastic={0.08}
+              dragMomentum={false}
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: 'rgba(255,255,255,0.22)',
+              }}
+              whileDrag={{
+                scale: 1.1,
+                boxShadow: '0 16px 38px rgba(0,0,0,0.2)',
+                cursor: 'grabbing',
+              }}
+              transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+              className="pointer-events-auto absolute flex h-[56px] w-[56px] select-none items-center justify-center rounded-2xl border border-white/20 bg-[rgba(255,255,255,0.15)] shadow-[0_10px_30px_rgba(0,0,0,0.15)] backdrop-blur-[14px] md:h-[60px] md:w-[60px]"
+              style={{
+                ...tool.style,
+                cursor: 'grab',
+              }}
+            >
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: tool.floatDuration,
+                  delay: tool.floatDelay,
+                  ease: 'easeInOut',
+                  repeat: Infinity,
+                }}
+                className="flex h-7 w-7 items-center justify-center"
+              >
+                <img
+                  src={tool.icon}
+                  alt={`${tool.name} logo`}
+                  draggable="false"
+                  className="h-7 w-7 object-contain hover:opacity-100 transition"
+                />
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
 
         <div
