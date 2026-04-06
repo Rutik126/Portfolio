@@ -85,7 +85,7 @@ const ContactSection = memo(function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative z-[60] -mt-[10vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(135deg,#4f4870_0%,#2f2c48_48%,#0e1118_100%)] px-6 pb-40 pt-12 md:px-8 xl:px-16"
+      className="relative z-[60] -mt-[10vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(135deg,#4f4870_0%,#2f2c48_48%,#0e1118_100%)] px-6 pb-40 pt-20 md:px-8 xl:px-16"
     >
       {/* <SectionChrome
         label="CONTACT"

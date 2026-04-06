@@ -56,7 +56,7 @@ const ArticlesSection = memo(function ArticlesSection() {
   return (
     <section
       id="articles"
-      className="relative z-50 -mt-[20vh] rounded-t-[32px] bg-[#090a11] px-6 pb-28 pt-32 md:px-8 xl:px-16"
+      className="relative z-50 -mt-[10vh] rounded-t-[32px] bg-[#090a11] px-6 pb-28 pt-32 md:px-8 xl:px-16"
     >
       {/* <SectionChrome
         label="ARTICLES"

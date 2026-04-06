@@ -288,9 +288,7 @@ const HeroSection = memo(function HeroSection() {
         >
           <div className="flex flex-wrap items-center justify-start gap-3">
             <a
-              href="/case-studies.html"
-              target="_blank"
-              rel="noreferrer"
+              href="/case-studies"
               data-cursor="interactive"
               className="inline-flex items-center rounded-full bg-[#111111] px-[22px] py-[12px] text-[15px] font-medium text-white transition-all duration-300 hover:bg-[#FFD600] hover:text-black md:text-[16px]"
             >

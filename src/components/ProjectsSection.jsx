@@ -1,5 +1,6 @@
 import { memo, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
+import { ArrowRight } from 'lucide-react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import * as THREE from 'three'
@@ -230,7 +231,7 @@ const ProjectsSection = memo(function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="projects-section relative z-40 -mt-[20vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(180deg,#d6e2f1_0%,#e6edf5_28%,#c7d5e2_58%,#090d15_100%)] px-6 pb-28 pt-32 md:px-8 xl:px-16"
+      className="projects-section relative z-40 -mt-[20vh] overflow-hidden rounded-t-[32px] bg-[linear-gradient(180deg,#d6e2f1_0%,#e6edf5_28%,#c7d5e2_58%,#090d15_100%)] px-6 pb-20 pt-24 md:px-8 xl:px-16"
     >
       {/* <SectionChrome
         label="PROJECTS"
@@ -252,7 +253,7 @@ const ProjectsSection = memo(function ProjectsSection() {
             ref={(element) => {
               stepRefs.current[index] = element
             }}
-            className="project-step relative flex min-h-screen items-center justify-center"
+            className="project-step relative flex min-h-[80vh] items-center justify-center"
             style={{ perspective: '1600px' }}
           >
             <div
@@ -279,26 +280,58 @@ const ProjectsSection = memo(function ProjectsSection() {
                 }}
                 className="project-card-surface [transform-style:preserve-3d]"
               >
-                <Card className="project-card overflow-hidden border-white/30 bg-white/[0.54] text-[#162033] shadow-[0_30px_90px_rgba(10,14,28,0.16)]">
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#324361]">
-                    {project.tag}
-                  </p>
-                  <h2 className="mt-6 text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95]">
-                    {project.title}
-                  </h2>
-                  <p className="project-card-body mt-6 max-w-2xl text-base leading-8 text-[#33425d]">
-                    {project.body}
-                  </p>
-                  <div className="project-card-image relative mt-12 h-[360px] overflow-hidden rounded-[24px] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.accent}`} />
-                    <div
-                      ref={(element) => {
-                        sweepRefs.current[index] = element
-                      }}
-                      className="pointer-events-none absolute inset-y-0 left-[-20%] w-[28%] -skew-x-12 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent)]"
-                    />
-                  </div>
-                </Card>
+                <a href={`/project/${project.slug}`} className="group block" data-cursor="interactive">
+                  <Card className="project-card overflow-hidden border-white/30 bg-white/[0.54] text-[#162033] shadow-[0_30px_90px_rgba(10,14,28,0.16)]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#324361]">
+                      {project.tag}
+                    </p>
+
+                    <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                      {[
+                        ['Client', project.client],
+                        ['Role', project.role],
+                        ['Duration', project.duration],
+                      ].map(([label, value]) => (
+                        <div key={label}>
+                          <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#324361]/58">
+                            {label}
+                          </p>
+                          <p className="mt-2 text-sm leading-6 text-[#25324b]/86">{value}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <h2 className="mt-5 text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95]">
+                      {project.title}
+                    </h2>
+                    <p className="project-card-body mt-5 max-w-3xl text-base leading-8 text-[#33425d]">
+                      {project.body}
+                    </p>
+                    <div className="project-card-image relative mt-8 h-[400px] overflow-hidden rounded-[24px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
+                      <img
+                        src={project.heroImage}
+                        alt={`${project.title} preview`}
+                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05] group-hover:brightness-[1.05]"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0.08)_42%,transparent)]" />
+                      <div
+                        ref={(element) => {
+                          sweepRefs.current[index] = element
+                        }}
+                        className="pointer-events-none absolute inset-y-0 left-[-20%] w-[28%] -skew-x-12 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent)]"
+                      />
+                    </div>
+
+                    <div className="mt-5 flex justify-end">
+                      <span className="inline-flex items-center gap-3 text-sm font-medium text-[#1e2a3f] transition-transform duration-300 group-hover:translate-x-1">
+                        View Project
+                        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#1e2a3f]/12 bg-white/45 transition-transform duration-300 group-hover:translate-x-1">
+                          <ArrowRight className="h-4 w-4" />
+                        </span>
+                      </span>
+                    </div>
+                  </Card>
+                </a>
               </div>
             </div>
           </div>

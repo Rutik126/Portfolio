@@ -145,22 +145,123 @@ export const milestones = [
 
 export const projects = [
   {
-    title: 'Nebula Commerce',
-    tag: 'Experience Architecture',
-    body: 'A modular storefront system balancing conversion, storytelling, and motion-led product discovery.',
-    accent: 'from-[#7e8dff] via-[#675FEC] to-[#312d66]',
-  },
+  slug: 'rsf-workforce-system',
+  title: 'RSF Workforce System',
+  tag: 'Product Design',
+  body: 'A workforce management system designed to streamline attendance, task tracking, and daily operations for factory workers.',
+  accent: 'from-[#7e8dff] via-[#675FEC] to-[#312d66]',
+  client: 'Rajarambapu Sugar Factory',
+  role: 'Product Designer',
+  duration: 'Sep — Nov 2025',
+  industry: 'Industrial Manufacturing',
+  platform: 'iOS · Android',
+  shortDescription:
+    'Designed a mobile-first system to digitize factory operations, improving visibility, coordination, and task management for on-ground teams.',
+  heroImage: '/rsf-project-img/RSF.png',
+
+  overview: [
+    'This project focused on transforming manual factory workflows into a structured digital system for managing attendance, tasks, and daily operations.',
+    'The goal was to simplify complex processes into a clear, usable mobile experience tailored for real-world industrial environments.',
+  ],
+
+  sections: [
+    {
+      title: 'Context',
+      body:
+        'Factory operations relied heavily on manual tracking and fragmented communication. This made it difficult to monitor attendance, track task progress, and maintain consistent reporting across teams.',
+      images: ['/rsf-project-img/1.png'],
+    },
+    {
+      title: 'Approach',
+      body:
+        'I designed a mobile-first experience focused on clarity and ease of use. The system introduced structured task flows, clear status indicators, and simplified interfaces optimized for workers with varying levels of digital familiarity.',
+      images: [],
+    },
+    {
+      title: 'Outcome',
+      body:
+        'The final design brings clarity to day-to-day operations by centralizing workflows into a single system. It improves visibility, reduces manual effort, and enables more efficient coordination between workers and supervisors.',
+      images: ['/rsf-project-img/RSF.png'],
+    },
+  ],
+},
   {
+    slug: 'flow-atlas',
     title: 'Flow Atlas',
     tag: 'UX Strategy',
     body: 'An operations workspace reimagined into a calm, cinematic cockpit where every dense workflow feels guided.',
     accent: 'from-[#ffd76e] via-[#e5a624] to-[#544118]',
+    client: 'Rajarambapu Sugar Factory',
+    role: 'Product Designer',
+    duration: 'Dec 2025 — Feb 2026',
+    industry: 'Operations',
+    platform: 'Desktop Dashboard',
+    shortDescription:
+      'A decision-focused workspace concept that translates operational complexity into calmer workflows, clearer states, and faster scanning.',
+    heroImage: '/project%20%201%20port.png',
+    overview: [
+      'Flow Atlas explored how an operations-heavy workspace could feel more directed and less exhausting across large volumes of data.',
+      'The design language prioritized signal over noise, using hierarchy, framing, and pacing to help teams stay oriented through dense flows.',
+    ],
+    sections: [
+      {
+        title: 'Problem Space',
+        body:
+          'Operations teams were moving across multiple information layers without enough emphasis on priority, system status, or next-step clarity. The interface needed to reduce cognitive load without removing depth.',
+        images: ['/Img/2.png'],
+      },
+      {
+        title: 'System Design',
+        body:
+          'I built a more cinematic dashboard rhythm with stronger sectioning, progressive disclosure, and surfaces that made alerts, metrics, and control zones feel intentionally grouped rather than visually crowded.',
+        images: ['/Img/3.png', '/Img/4.png'],
+      },
+      {
+        title: 'Experience Impact',
+        body:
+          'The result is a workspace that feels more decisive. Users can identify what matters first, move through tasks with fewer abrupt jumps, and maintain context as they go deeper into the system.',
+        images: ['/Img/1.png'],
+      },
+    ],
   },
   {
+    slug: 'signal-os',
     title: 'Signal OS',
     tag: 'Design Engineering',
     body: 'A robust design system and frontend language built to make complexity feel precise, responsive, and premium.',
     accent: 'from-[#7bf1df] via-[#50a8ff] to-[#152a52]',
+    client: 'Rajarambapu Sugar Factory',
+    role: 'Product Designer',
+    duration: 'Mar — May 2026',
+    industry: 'Design Systems',
+    platform: 'Web Platform',
+    shortDescription:
+      'A system-level initiative aligning interface patterns, reusable components, and implementation behavior into one scalable product language.',
+    heroImage: '/project%20%201%20port.png',
+    overview: [
+      'Signal OS focused on consistency at scale, defining how interface pieces should behave, not just how they should look.',
+      'It created a stronger bridge between design intent and frontend execution, improving repeatability without flattening the product’s visual character.',
+    ],
+    sections: [
+      {
+        title: 'Foundation',
+        body:
+          'The work started by identifying repeated interaction patterns, mismatched states, and visual drift across the product surface. From there, I defined a shared component language with clearer tokens and usage logic.',
+        images: ['/Img/5.png'],
+      },
+      {
+        title: 'Pattern Library',
+        body:
+          'Reusable modules were documented around state behavior, spacing logic, hierarchy, and motion principles. The goal was to give teams a practical system that accelerated execution rather than adding process overhead.',
+        images: ['/Img/6.png', '/Img/7.png'],
+      },
+      {
+        title: 'Delivery',
+        body:
+          'By tying interaction rules and implementation quality together, the system made interfaces feel more coherent, more premium, and more dependable across different product areas.',
+        images: ['/Img/8.png'],
+      },
+    ],
   },
 ]
 
