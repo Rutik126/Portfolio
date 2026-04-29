@@ -295,7 +295,7 @@ const HeroSection = memo(function HeroSection() {
               View Case Studies
             </a>
             <a
-              href="/Rutik-Kumbhar-Resume.pdf"
+              href="/Rutik_Kumbhar_Resume _(designer).pdf"
               download="Rutik-Resume.pdf"
               data-cursor="interactive"
               className="inline-flex items-center rounded-full border border-black/10 bg-white/65 px-[22px] py-[12px] text-[15px] font-medium text-[#111111] transition-all duration-300 hover:border-black/20 hover:bg-white md:text-[16px]"

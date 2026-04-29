@@ -268,24 +268,33 @@ export const projects = [
 
 export const articles = [
   {
-    title: 'Design Is Not Decoration',
-    description: 'Why premium interfaces earn trust when visual styling grows from clear system behavior.',
-    image:
-      'linear-gradient(135deg, rgba(139,124,255,0.95), rgba(80,193,255,0.45)), radial-gradient(circle at 24% 28%, rgba(255,255,255,0.36), transparent 42%)',
+    title: 'AI Can Build Fast, But Can It Build Right?',
+    description:
+      'A practical look at the gap between shipping quickly with AI and building products with the right quality, structure, and decisions.',
+    image: 'url("/Articals/artical_1.png")',
+    href: 'https://medium.com/@ruthikkumbhar/ai-can-build-fast-but-can-it-build-right-2e0b3705bbea',
   },
   {
-    title: 'Motion As Information',
-    description: 'How animation reveals hierarchy, intent, continuity, and the next best action without noise.',
-    image:
-      'linear-gradient(135deg, rgba(255,214,0,0.88), rgba(103,95,236,0.58)), radial-gradient(circle at 72% 24%, rgba(255,255,255,0.24), transparent 38%)',
+    title: 'How to Set Up Apache Superset on Your Local Machine',
+    description:
+      'A step-by-step setup guide for running Apache Superset locally so you can start exploring data and dashboards on your own machine.',
+    image: 'url("/Articals/artical_2.png")',
+    href: 'https://medium.com/@ruthikkumbhar/how-to-set-up-apache-superset-on-your-local-machine-step-by-step-guide-0b18ed82d3f2',
   },
   {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+    title: 'Creating Your First Chart and Dashboard in Apache Superset',
+    description:
+      'A guided walkthrough for turning raw data into your first working chart and dashboard inside Apache Superset.',
+    image: 'url("/Articals/artical_3.png")',
+    href: 'https://medium.com/@ruthikkumbhar/creating-your-first-chart-and-dashboard-in-apache-superset-step-by-step-c3293b36b934',
   },
-  
+  {
+    title: 'Advanced Methods and Queries for Creating Charts in Apache Superset',
+    description:
+      'More advanced chart-building techniques and query methods for creating richer visualizations in Apache Superset.',
+    image:'url("/Articals/artical_4.png")',
+    href: 'https://medium.com/@ruthikkumbhar/advanced-methods-and-queries-for-creating-charts-in-apache-superset-24a118f5d1af',
+  },
 ]
 
 export const contacts = [

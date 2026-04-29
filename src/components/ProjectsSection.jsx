@@ -253,14 +253,14 @@ const ProjectsSection = memo(function ProjectsSection() {
             ref={(element) => {
               stepRefs.current[index] = element
             }}
-            className="project-step relative flex min-h-[80vh] items-center justify-center"
+            className="project-step relative flex min-h-[72vh] items-center justify-center pb-16"
             style={{ perspective: '1600px' }}
           >
             <div
               ref={(element) => {
                 titleRefs.current[index] = element
               }}
-              className="project-watermark pointer-events-none absolute inset-x-0 text-center text-[clamp(4rem,11vw,11rem)] font-bold uppercase tracking-[0.18em] text-[rgba(32,48,77,0.12)]"
+              className="project-watermark pointer-events-none absolute inset-x-0 text-center text-[clamp(3.4rem,9vw,9rem)] font-bold uppercase tracking-[0.16em] text-[rgba(32,48,77,0.12)]"
             >
               {project.title}
             </div>
@@ -269,7 +269,7 @@ const ProjectsSection = memo(function ProjectsSection() {
               ref={(element) => {
                 cardRefs.current[index] = element
               }}
-              className="project-card-shell relative w-full max-w-4xl [transform-style:preserve-3d] will-change-transform"
+              className="project-card-shell relative w-full max-w-[960px] [transform-style:preserve-3d] will-change-transform"
               onMouseMove={(event) => handleProjectMove(index, event)}
               onMouseEnter={() => handleProjectEnter(index)}
               onMouseLeave={() => handleProjectLeave(index)}
@@ -281,12 +281,15 @@ const ProjectsSection = memo(function ProjectsSection() {
                 className="project-card-surface [transform-style:preserve-3d]"
               >
                 <a href={`/project/${project.slug}`} className="group block" data-cursor="interactive">
-                  <Card className="project-card overflow-hidden border-white/30 bg-white/[0.54] text-[#162033] shadow-[0_30px_90px_rgba(10,14,28,0.16)]">
+                  <Card
+                    padding="compact"
+                    className="project-card overflow-hidden border-white/30 bg-white/[0.54] text-[#162033] shadow-[0_24px_72px_rgba(10,14,28,0.14)] md:p-7"
+                  >
                     <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#324361]">
                       {project.tag}
                     </p>
 
-                    <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
                       {[
                         ['Client', project.client],
                         ['Role', project.role],
@@ -296,18 +299,18 @@ const ProjectsSection = memo(function ProjectsSection() {
                           <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#324361]/58">
                             {label}
                           </p>
-                          <p className="mt-2 text-sm leading-6 text-[#25324b]/86">{value}</p>
+                          <p className="mt-1.5 text-sm leading-6 text-[#25324b]/86">{value}</p>
                         </div>
                       ))}
                     </div>
 
-                    <h2 className="mt-5 text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95]">
+                    <h2 className="mt-4 text-[clamp(2.3rem,5vw,4.1rem)] font-bold leading-[0.95]">
                       {project.title}
                     </h2>
-                    <p className="project-card-body mt-5 max-w-3xl text-base leading-8 text-[#33425d]">
+                    <p className="project-card-body mt-4 max-w-3xl text-[15px] leading-7 text-[#33425d]">
                       {project.body}
                     </p>
-                    <div className="project-card-image relative mt-8 h-[400px] overflow-hidden rounded-[24px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]">
+                    <div className="project-card-image relative mt-6 h-[320px] overflow-hidden rounded-[22px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] md:h-[350px]">
                       <img
                         src={project.heroImage}
                         alt={`${project.title} preview`}
@@ -322,10 +325,10 @@ const ProjectsSection = memo(function ProjectsSection() {
                       />
                     </div>
 
-                    <div className="mt-5 flex justify-end">
+                    <div className="mt-4 flex justify-end">
                       <span className="inline-flex items-center gap-3 text-sm font-medium text-[#1e2a3f] transition-transform duration-300 group-hover:translate-x-1">
                         View Project
-                        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#1e2a3f]/12 bg-white/45 transition-transform duration-300 group-hover:translate-x-1">
+                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1e2a3f]/12 bg-white/45 transition-transform duration-300 group-hover:translate-x-1">
                           <ArrowRight className="h-4 w-4" />
                         </span>
                       </span>

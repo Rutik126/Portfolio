@@ -154,7 +154,14 @@ const ArticlesSection = memo(function ArticlesSection() {
                 }}
                 className="pointer-events-none absolute inset-x-6 top-8 h-[82%] rounded-[24px] bg-black/30 blur-2xl"
               />
-              <motion.div whileHover={{ y: -6 }} transition={{ duration: 0.25 }}>
+              <motion.a
+                href={article.href}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.25 }}
+                className="block"
+              >
                 <Card
                   ref={(element) => {
                     cardRefs.current[index] = element
@@ -172,15 +179,18 @@ const ArticlesSection = memo(function ArticlesSection() {
                       <p className="mt-4 max-w-xl text-base leading-8 text-[rgba(234,234,240,0.76)]">
                         {article.description}
                       </p>
+                      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-[rgba(255,214,0,0.82)]">
+                        Read on Medium
+                      </p>
                     </div>
                   </div>
 
                   <div
-                    className="min-h-[240px] rounded-[20px]"
+                    className="min-h-[240px] rounded-[20px] bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: article.image }}
                   />
                 </Card>
-              </motion.div>
+              </motion.a>
             </motion.div>
           ))}
         </div>
