@@ -67,58 +67,58 @@ export const caseStudies = [
     gradient: 'from-[#0a1119] via-[#15324d] to-[#4da1ff]',
     layout: 'md:col-span-3 xl:col-span-5',
   },
-  {
-    id: '04',
-    category: 'Commerce',
-    title: 'Loom & Ledger Storefront',
-    summary:
-      'Shaped a conversion-led product discovery flow that balanced storytelling, filtering, and purchase confidence in one cohesive system.',
-    outcome: 'Conversion rate +17%',
-    scope: 'E-commerce UX  •  Prototyping',
-    year: '2024',
-    tone: 'light',
-    gradient: 'from-[#f4f0e6] via-[#e8dcc7] to-[#c8b18c]',
-    layout: 'md:col-span-6 xl:col-span-8',
-  },
-  {
-    id: '05',
-    category: 'EdTech',
-    title: 'Northstar Learning Flow',
-    summary:
-      'Built a modular lesson architecture with clearer progress signals so learners always knew what to do next and why it mattered.',
-    outcome: 'Module completion +28%',
-    scope: 'Interaction Design  •  Motion',
-    year: '2023',
-    tone: 'dark',
-    gradient: 'from-[#0d0d16] via-[#37204c] to-[#ff6f61]',
-    layout: 'md:col-span-3 xl:col-span-4',
-  },
-  {
-    id: '06',
-    category: 'Public Service',
-    title: 'CivicFlow Service Portal',
-    summary:
-      'Simplified a multi-step citizen service process into an understandable guided form system with stronger trust cues and error recovery.',
-    outcome: 'Drop-off rate -26%',
-    scope: 'Service Design  •  Forms',
-    year: '2025',
-    tone: 'light',
-    gradient: 'from-[#edf2f6] via-[#dbe6ef] to-[#a9bed1]',
-    layout: 'md:col-span-3 xl:col-span-4',
-  },
-  {
-    id: '07',
-    category: 'Design System',
-    title: 'Prism Component Language',
-    summary:
-      'Created a scalable design system foundation that aligned product teams on interaction patterns, tokens, and faster handoff quality.',
-    outcome: 'Handoff time -35%',
-    scope: 'Tokens  •  Documentation  •  Governance',
-    year: '2025',
-    tone: 'dark',
-    gradient: 'from-[#131316] via-[#1d2736] to-[#6fd2c0]',
-    layout: 'md:col-span-6 xl:col-span-8',
-  },
+  // {
+  //   id: '04',
+  //   category: 'Commerce',
+  //   title: 'Loom & Ledger Storefront',
+  //   summary:
+  //     'Shaped a conversion-led product discovery flow that balanced storytelling, filtering, and purchase confidence in one cohesive system.',
+  //   outcome: 'Conversion rate +17%',
+  //   scope: 'E-commerce UX  •  Prototyping',
+  //   year: '2024',
+  //   tone: 'light',
+  //   gradient: 'from-[#f4f0e6] via-[#e8dcc7] to-[#c8b18c]',
+  //   layout: 'md:col-span-6 xl:col-span-8',
+  // },
+  // {
+  //   id: '05',
+  //   category: 'EdTech',
+  //   title: 'Northstar Learning Flow',
+  //   summary:
+  //     'Built a modular lesson architecture with clearer progress signals so learners always knew what to do next and why it mattered.',
+  //   outcome: 'Module completion +28%',
+  //   scope: 'Interaction Design  •  Motion',
+  //   year: '2023',
+  //   tone: 'dark',
+  //   gradient: 'from-[#0d0d16] via-[#37204c] to-[#ff6f61]',
+  //   layout: 'md:col-span-3 xl:col-span-4',
+  // },
+  // {
+  //   id: '06',
+  //   category: 'Public Service',
+  //   title: 'CivicFlow Service Portal',
+  //   summary:
+  //     'Simplified a multi-step citizen service process into an understandable guided form system with stronger trust cues and error recovery.',
+  //   outcome: 'Drop-off rate -26%',
+  //   scope: 'Service Design  •  Forms',
+  //   year: '2025',
+  //   tone: 'light',
+  //   gradient: 'from-[#edf2f6] via-[#dbe6ef] to-[#a9bed1]',
+  //   layout: 'md:col-span-3 xl:col-span-4',
+  // },
+  // {
+  //   id: '07',
+  //   category: 'Design System',
+  //   title: 'Prism Component Language',
+  //   summary:
+  //     'Created a scalable design system foundation that aligned product teams on interaction patterns, tokens, and faster handoff quality.',
+  //   outcome: 'Handoff time -35%',
+  //   scope: 'Tokens  •  Documentation  •  Governance',
+  //   year: '2025',
+  //   tone: 'dark',
+  //   gradient: 'from-[#131316] via-[#1d2736] to-[#6fd2c0]',
+  //   layout: 'md:col-span-6 xl:col-span-8',
+  // },
 ]
 
 export const milestones = [
@@ -279,6 +279,59 @@ export const articles = [
       'linear-gradient(135deg, rgba(255,214,0,0.88), rgba(103,95,236,0.58)), radial-gradient(circle at 72% 24%, rgba(255,255,255,0.24), transparent 38%)',
   },
   {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  },
+   {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  },
+   {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  },
+   {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  }, {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  }, {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  }, {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  }, {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  }, {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  }, {
+    title: 'Building Calm Interfaces',
+    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
+    image:
+      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
+  }, {
     title: 'Building Calm Interfaces',
     description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
     image:

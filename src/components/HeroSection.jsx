@@ -163,11 +163,11 @@ const HeroSection = memo(function HeroSection() {
           className="hero-heading absolute inset-x-0 top-[36%] z-10 -translate-y-1/2 px-6 md:top-[28%] md:px-8 xl:px-16"
         >
           <div className="mx-auto max-w-[1480px]">
-            <div className="hero-heading-line relative z-30 text-center text-[clamp(42px,10vw,72px)] font-extrabold leading-[0.9] tracking-[-0.06em] text-[#0F0F0F] md:text-[clamp(72px,9vw,160px)]">
+            <div className="hero-heading-line relative z-30 text-center text-[clamp(42px,10vw,72px)] font-extrabold leading-[0.8] tracking-[-0.04em] text-[#0F0F0F] md:text-[clamp(72px,9vw,160px)]">
               {heroContent.primaryTitle}
             </div>
             <div
-              className="hero-heading-line relative z-10 -mt-2 text-center text-[clamp(42px,10vw,72px)] font-extrabold leading-[0.9] tracking-[-0.06em] text-transparent md:-mt-1 md:text-[clamp(72px,9vw,160px)]"
+              className="hero-heading-line relative z-10 -mt-2 text-center text-[clamp(42px,10vw,72px)] font-extrabold leading-[0.9] tracking-[-0.04em] text-transparent md:-mt-1 md:text-[clamp(72px,9vw,160px)]"
               style={{
                 WebkitTextStroke: '1.6px #CFCFCF',
                 opacity: 0.6,
