@@ -123,24 +123,25 @@ export const caseStudies = [
 
 export const milestones = [
   {
-    date: 'Dec 2021',
-    title: 'Engineering foundation',
-    body: 'Started my engineering journey, building a strong foundation in problem-solving, systems thinking, and technical execution.',
-  },
-  {
-    date: 'Jan 2025',
-    title: 'Internship begins',
-    body: 'Started my UI/UX internship at GTT Data Solutions, translating design decisions into production-ready interfaces and clearer user flows.',
-  },{
-    date: 'May 2025',
-    title: 'Certified engineer',
-    body: 'Graduated with an A grade, bringing together design sensibility, engineering rigor, and a sharper systems mindset.',
-  },
-  {
-    date: 'Jun 2025',
-    title: 'Full-time transition',
-    body: 'Stepped into a full-time UI/UX Designer role, shaping product systems with stronger consistency, interaction quality, and visual discipline.',
-  },
+  date: 'Dec 2021',
+  title: 'Engineering Foundation',
+  body: 'Started my engineering journey, learning how to solve problems, think in systems, and build things from the ground up.',
+},
+{
+  date: 'Jan 2025',
+  title: 'UI/UX Internship',
+  body: 'Began my UI/UX internship at GTT Data Solutions, where I worked on real projects and learned how design decisions impact actual users.',
+},
+{
+  date: 'May 2025',
+  title: 'Graduation',
+  body: 'Graduated with an A grade, gaining both technical knowledge and a clearer understanding of how design and engineering work together.',
+},
+{
+  date: 'Jun 2025',
+  title: 'UI/UX Designer',
+  body: 'Started working as a full-time UI/UX Designer, focusing on creating clean, usable interfaces and improving overall user experience.',
+},
 ]
 
 export const projects = [
@@ -284,59 +285,7 @@ export const articles = [
     image:
       'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
   },
-   {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  },
-   {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  },
-   {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  }, {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  }, {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  }, {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  }, {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  }, {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  }, {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  }, {
-    title: 'Building Calm Interfaces',
-    description: 'Engineering decisions that quietly improve clarity, accessibility, and perceived product quality.',
-    image:
-      'linear-gradient(135deg, rgba(103,95,236,0.82), rgba(65,62,92,0.98)), radial-gradient(circle at 65% 58%, rgba(255,255,255,0.18), transparent 36%)',
-  },
+  
 ]
 
 export const contacts = [

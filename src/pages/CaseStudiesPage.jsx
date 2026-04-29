@@ -6,7 +6,7 @@ const overviewStats = [
   {
     icon: LayoutGrid,
     label: 'Case Studies',
-    value: '07',
+    value: '03',
     detail: 'A curated mix of product, service, and systems work.',
   },
   {
@@ -81,13 +81,12 @@ function CaseStudiesPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[rgba(255,214,0,0.82)]">
               Selected Case Studies
             </p>
-            <h1 className="mt-6 text-[clamp(3rem,7vw,6.8rem)] font-bold leading-[0.9] tracking-[-0.06em] text-[rgba(245,245,248,0.96)]">
+            <h1 className="mt-6 text-[clamp(3rem,7vw,6.8rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[rgba(245,245,248,0.96)]">
               Product stories shaped through research, interaction logic, and system thinking.
             </h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-[rgba(234,234,240,0.72)] md:text-lg">
-              A focused collection of UX and UI case studies arranged like editorial spreads
-              instead of a flat grid, so each project has room to feel distinct and memorable.
-            </p>
+            {/* <p className="mt-6 max-w-3xl text-base leading-8 text-[rgba(234,234,240,0.72)] md:text-lg">
+              A focused collection of UX and UI case studies.
+            </p> */}
 
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(245,245,248,0.72)]">
