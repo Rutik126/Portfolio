@@ -228,45 +228,45 @@ export const projects = [
       },
     ],
   },
-  {
-    slug: 'signal-os',
-    title: 'Signal OS',
-    tag: 'Design Engineering',
-    body: 'A robust design system and frontend language built to make complexity feel precise, responsive, and premium.',
-    accent: 'from-[#7bf1df] via-[#50a8ff] to-[#152a52]',
-    client: 'Rajarambapu Sugar Factory',
-    role: 'Product Designer',
-    duration: 'Mar — May 2026',
-    industry: 'Design Systems',
-    platform: 'Web Platform',
-    shortDescription:
-      'A system-level initiative aligning interface patterns, reusable components, and implementation behavior into one scalable product language.',
-    heroImage: '/project%20%201%20port.png',
-    overview: [
-      'Signal OS focused on consistency at scale, defining how interface pieces should behave, not just how they should look.',
-      'It created a stronger bridge between design intent and frontend execution, improving repeatability without flattening the product’s visual character.',
-    ],
-    sections: [
-      {
-        title: 'Foundation',
-        body:
-          'The work started by identifying repeated interaction patterns, mismatched states, and visual drift across the product surface. From there, I defined a shared component language with clearer tokens and usage logic.',
-        images: ['/Img/5.png'],
-      },
-      {
-        title: 'Pattern Library',
-        body:
-          'Reusable modules were documented around state behavior, spacing logic, hierarchy, and motion principles. The goal was to give teams a practical system that accelerated execution rather than adding process overhead.',
-        images: ['/Img/6.png', '/Img/7.png'],
-      },
-      {
-        title: 'Delivery',
-        body:
-          'By tying interaction rules and implementation quality together, the system made interfaces feel more coherent, more premium, and more dependable across different product areas.',
-        images: ['/Img/8.png'],
-      },
-    ],
-  },
+  // {
+  //   slug: 'signal-os',
+  //   title: 'Signal OS',
+  //   tag: 'Design Engineering',
+  //   body: 'A robust design system and frontend language built to make complexity feel precise, responsive, and premium.',
+  //   accent: 'from-[#7bf1df] via-[#50a8ff] to-[#152a52]',
+  //   client: 'Rajarambapu Sugar Factory',
+  //   role: 'Product Designer',
+  //   duration: 'Mar — May 2026',
+  //   industry: 'Design Systems',
+  //   platform: 'Web Platform',
+  //   shortDescription:
+  //     'A system-level initiative aligning interface patterns, reusable components, and implementation behavior into one scalable product language.',
+  //   heroImage: '/project%20%201%20port.png',
+  //   overview: [
+  //     'Signal OS focused on consistency at scale, defining how interface pieces should behave, not just how they should look.',
+  //     'It created a stronger bridge between design intent and frontend execution, improving repeatability without flattening the product’s visual character.',
+  //   ],
+  //   sections: [
+  //     {
+  //       title: 'Foundation',
+  //       body:
+  //         'The work started by identifying repeated interaction patterns, mismatched states, and visual drift across the product surface. From there, I defined a shared component language with clearer tokens and usage logic.',
+  //       images: ['/Img/5.png'],
+  //     },
+  //     {
+  //       title: 'Pattern Library',
+  //       body:
+  //         'Reusable modules were documented around state behavior, spacing logic, hierarchy, and motion principles. The goal was to give teams a practical system that accelerated execution rather than adding process overhead.',
+  //       images: ['/Img/6.png', '/Img/7.png'],
+  //     },
+  //     {
+  //       title: 'Delivery',
+  //       body:
+  //         'By tying interaction rules and implementation quality together, the system made interfaces feel more coherent, more premium, and more dependable across different product areas.',
+  //       images: ['/Img/8.png'],
+  //     },
+  //   ],
+  // },
 ]
 
 export const articles = [
