@@ -9,9 +9,14 @@ import ProjectsSection from './components/ProjectsSection'
 import ArticlesSection from './components/ArticlesSection'
 import ContactSection from './components/ContactSection'
 import CaseStudiesPage from './pages/CaseStudiesPage'
+import CaseStudiesConstructionPage from './pages/CaseStudiesConstructionPage'
 import ProjectCaseStudyPage from './pages/ProjectCaseStudyPage'
 
 function getRoute(pathname) {
+  if (pathname === '/case-studies-construction') {
+    return { type: 'case-studies-construction' }
+  }
+
   if (pathname === '/case-studies') {
     return { type: 'case-studies' }
   }
@@ -42,6 +47,10 @@ function App() {
 
   if (route.type === 'case-studies') {
     return <CaseStudiesPage />
+  }
+
+  if (route.type === 'case-studies-construction') {
+    return <CaseStudiesConstructionPage />
   }
 
   if (route.type === 'project') {
