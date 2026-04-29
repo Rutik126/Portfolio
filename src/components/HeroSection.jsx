@@ -7,7 +7,7 @@ import HireMeButton from './HireMeButton'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const portraitImage = '/Img/4.png'
+const portraitImage = '/Img/Rutik_img.png'
 const capabilityCardStyles = [
   'bg-[#F1E2D0] text-[#111111] -rotate-[6deg] translate-y-2',
   'bg-[#111111] text-white rotate-[4deg] -translate-y-1',
