@@ -64,8 +64,8 @@ function App() {
         <Navbar />
         <main className="relative isolate">
           <HeroSection />
-          <TimelineSection />
           <ProjectsSection />
+          <TimelineSection />
           <ArticlesSection />
           <ContactSection />
         </main>

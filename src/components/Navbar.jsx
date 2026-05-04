@@ -67,28 +67,41 @@ function Navbar() {
         })
         .filter(Boolean)
 
-      const activeTriggers = navItems
-        .map((item) => {
+      const updateActiveHref = () => {
+        const markerY = window.innerHeight * 0.42
+        let nextActiveHref = navItems[0]?.href ?? '#hero'
+
+        navItems.forEach((item) => {
           const target = document.querySelector(item.href)
+
           if (!target) {
-            return null
+            return
           }
 
-          return ScrollTrigger.create({
-            trigger: target,
-            start: 'top 45%',
-            end: 'bottom 45%',
-            onEnter: () => setActiveHref(item.href),
-            onEnterBack: () => setActiveHref(item.href),
-          })
+          const rect = target.getBoundingClientRect()
+
+          if (rect.top <= markerY && rect.bottom > markerY) {
+            nextActiveHref = item.href
+          }
         })
-        .filter(Boolean)
+
+        setActiveHref(nextActiveHref)
+      }
+
+      const activeTrigger = ScrollTrigger.create({
+        start: 0,
+        end: 'max',
+        onUpdate: updateActiveHref,
+        onRefresh: updateActiveHref,
+      })
+
+      updateActiveHref()
 
       ScrollTrigger.refresh()
 
       return () => {
         themeTriggers.forEach((trigger) => trigger.kill())
-        activeTriggers.forEach((trigger) => trigger.kill())
+        activeTrigger.kill()
       }
     })
 
@@ -119,6 +132,7 @@ function Navbar() {
   const handleNavigate = (event, href) => {
     event.preventDefault()
     setIsMobileMenuOpen(false)
+    setActiveHref(href)
     const target = document.querySelector(href)
     const lenis = lenisController?.getLenis()
 

@@ -117,7 +117,7 @@ const ArticlesSection = memo(function ArticlesSection() {
   return (
     <section
       id="articles"
-      className="relative z-[70] -mt-[10vh] rounded-t-[32px] bg-[#090a11] px-6 pb-36 pt-32 md:px-8 xl:px-16"
+      className="relative z-[70] -mt-[10vh] rounded-t-[32px] bg-[#090a11] px-6 pb-36 pt-24 md:px-8 xl:px-16"
     >
       {/* <SectionChrome
         label="ARTICLES"
@@ -126,12 +126,12 @@ const ArticlesSection = memo(function ArticlesSection() {
       /> */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(255,214,0,0.06),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
       <div className="relative z-10 mx-auto max-w-[1200px]">
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-16 max-w-3xl">
           {/* <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[rgba(255,214,0,0.8)]">
             Articles
           </p> */}
-          <h2 className="mt-6 text-[clamp(2.6rem,5vw,4rem)] font-bold leading-tight text-[rgba(234,234,240,0.9)]">
-            A layered reading experience where each idea arrives with weight.
+          <h2 className="mt-4 text-[clamp(2.6rem,5vw,4rem)] font-bold leading-tight text-[rgba(234,234,240,0.9)]">
+            Stories, lessons, and real experiences from my product design journey.
           </h2>
         </div>
 
@@ -171,7 +171,7 @@ const ArticlesSection = memo(function ArticlesSection() {
                   <div className="flex flex-col justify-between">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(161,161,181,0.7)]">
-                        Essay {String(index + 1).padStart(2, '0')}
+                        Article {String(index + 1).padStart(2, '0')}
                       </p>
                       <h3 className="mt-4 text-[clamp(2rem,3vw,2.8rem)] font-bold leading-tight text-[rgba(234,234,240,0.9)]">
                         {article.title}

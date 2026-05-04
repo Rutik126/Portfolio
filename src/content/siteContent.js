@@ -1,15 +1,15 @@
 export const navItems = [
   { label: 'About', href: '#hero' },
-  { label: 'Experience', href: '#timeline' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#timeline' },
   { label: 'Articles', href: '#articles' },
   { label: 'Contact', href: '#contact' },
 ]
 
 export const headerSections = [
   { id: 'hero', theme: 'light' },
-  { id: 'timeline', theme: 'dark' },
   { id: 'projects', theme: 'light' },
+  { id: 'timeline', theme: 'dark' },
   { id: 'articles', theme: 'dark' },
   { id: 'contact', theme: 'dark' },
 ]
@@ -209,7 +209,7 @@ export const projects = [
         title: 'Problem & Vision',
         body:
           'Modern routines often reduce opportunities for neighbors to interact, leaving people disconnected from nearby events, local issues, and the people living around them. TownSquare was designed to bridge that gap by creating a location-based platform focused on real-time local awareness and stronger community connection.',
-        images: [''],
+        images: ['/TownSquare-project-img/cover_3.png'],
       },
       {
         title: 'Core Experience',
@@ -271,6 +271,13 @@ export const projects = [
 
 export const articles = [
   {
+    title: 'Designing for Habit: How UX Designers Prioritize User Behavior Across Different Apps',
+    description:
+      'A UX-focused look at how different apps shape repeated behavior through user needs, context, motivation, and interaction patterns.',
+    image: 'url("/Articals/artical_5.png")',
+    href: 'https://medium.com/@ruthikkumbhar/designing-for-habit-how-ux-designers-prioritize-user-behavior-across-different-apps-5978f1f57143',
+  },
+  {
     title: 'AI Can Build Fast, But Can It Build Right?',
     description:
       'A practical look at the gap between shipping quickly with AI and building products with the right quality, structure, and decisions.',
@@ -295,7 +302,7 @@ export const articles = [
     title: 'Advanced Methods and Queries for Creating Charts in Apache Superset',
     description:
       'More advanced chart-building techniques and query methods for creating richer visualizations in Apache Superset.',
-    image:'url("/Articals/artical_4.png")',
+    image: 'url("/Articals/artical_4.png")',
     href: 'https://medium.com/@ruthikkumbhar/advanced-methods-and-queries-for-creating-charts-in-apache-superset-24a118f5d1af',
   },
 ]
