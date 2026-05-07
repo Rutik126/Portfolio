@@ -157,7 +157,7 @@ const HeroSection = memo(function HeroSection() {
         <HireMeButton />
         <p
           ref={introRef}
-          className="hero-intro absolute left-[5%] top-[58%] z-30 max-w-[420px] -translate-y-1/2 text-left text-[clamp(16px,1.2vw,20px)] font-medium tracking-[-0.01em] text-[#666666]"
+          className="hero-intro absolute left-[5%] top-[58%] z-30 max-w-[420px] -translate-y-1/2 whitespace-pre-line text-left text-[clamp(16px,1.2vw,20px)] font-medium tracking-[-0.01em] text-[#666666]"
         >
           {introBeforeName}
           <span className="hero-intro-name font-black text-[#0F0F0F]">{highlightedName}</span>

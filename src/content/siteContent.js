@@ -15,7 +15,7 @@ export const headerSections = [
 ]
 
 export const heroContent = {
-  introLine: 'I’m Rutik Kumbhar, a UI/UX Designer creating experiences that people understand without needing to think too much. I love turning moments like "Wait... what do I do now?" into "Ohhh, this feels easy." That’s the kind of experience I want to design.',
+  introLine: 'I’m Rutik Kumbhar, a UI/UX Designer creating experiences that people understand without needing to think too much.\nI love turning moments like "Wait... what do I do now?" into "Ohhh, this feels easy." That’s the kind of experience I want to design.',
   primaryTitle: 'UI/UX Designer',
   secondaryTitle: '& Developer',
   location: 'based in India',
@@ -271,11 +271,20 @@ export const projects = [
 
 export const articles = [
   {
+    title: 'I Thought Variants Were Just a Figma Feature Until My Design File Started Breaking',
+    description:
+      'A practical reflection on how Figma variants affect design systems, component structure, and file maintainability as projects grow.',
+    image: 'url("/Articals/artical_6.png")',
+    href: 'https://www.linkedin.com/pulse/i-thought-variants-were-just-figma-feature-until-my-design-kumbhar-mk3xc',
+    platform: 'LinkedIn',
+  },
+  {
     title: 'Designing for Habit: How UX Designers Prioritize User Behavior Across Different Apps',
     description:
       'A UX-focused look at how different apps shape repeated behavior through user needs, context, motivation, and interaction patterns.',
     image: 'url("/Articals/artical_5.png")',
     href: 'https://medium.com/@ruthikkumbhar/designing-for-habit-how-ux-designers-prioritize-user-behavior-across-different-apps-5978f1f57143',
+    platform: 'Medium',
   },
   {
     title: 'AI Can Build Fast, But Can It Build Right?',
@@ -283,6 +292,7 @@ export const articles = [
       'A practical look at the gap between shipping quickly with AI and building products with the right quality, structure, and decisions.',
     image: 'url("/Articals/artical_1.png")',
     href: 'https://medium.com/@ruthikkumbhar/ai-can-build-fast-but-can-it-build-right-2e0b3705bbea',
+    platform: 'Medium',
   },
   {
     title: 'How to Set Up Apache Superset on Your Local Machine',
@@ -290,6 +300,7 @@ export const articles = [
       'A step-by-step setup guide for running Apache Superset locally so you can start exploring data and dashboards on your own machine.',
     image: 'url("/Articals/artical_2.png")',
     href: 'https://medium.com/@ruthikkumbhar/how-to-set-up-apache-superset-on-your-local-machine-step-by-step-guide-0b18ed82d3f2',
+    platform: 'Medium',
   },
   {
     title: 'Creating Your First Chart and Dashboard in Apache Superset',
@@ -297,6 +308,7 @@ export const articles = [
       'A guided walkthrough for turning raw data into your first working chart and dashboard inside Apache Superset.',
     image: 'url("/Articals/artical_3.png")',
     href: 'https://medium.com/@ruthikkumbhar/creating-your-first-chart-and-dashboard-in-apache-superset-step-by-step-c3293b36b934',
+    platform: 'Medium',
   },
   {
     title: 'Advanced Methods and Queries for Creating Charts in Apache Superset',
@@ -304,6 +316,7 @@ export const articles = [
       'More advanced chart-building techniques and query methods for creating richer visualizations in Apache Superset.',
     image: 'url("/Articals/artical_4.png")',
     href: 'https://medium.com/@ruthikkumbhar/advanced-methods-and-queries-for-creating-charts-in-apache-superset-24a118f5d1af',
+    platform: 'Medium',
   },
 ]
 

@@ -180,7 +180,7 @@ const ArticlesSection = memo(function ArticlesSection() {
                         {article.description}
                       </p>
                       <p className="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-[rgba(255,214,0,0.82)]">
-                        Read on Medium
+                        Read on {article.platform}
                       </p>
                     </div>
                   </div>
