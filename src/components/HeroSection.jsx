@@ -84,7 +84,13 @@ const HeroSection = memo(function HeroSection() {
   const locationRef = useRef(null)
   const actionsRef = useRef(null)
   const highlightedName = 'Rutik Kumbhar'
-  const [introBeforeName, introAfterName] = heroContent.introLine.split(highlightedName)
+  const expressionStart = '"Wait... what do I do now?"'
+  const expressionEnd = '"Ohhh, this feels easy."'
+  const [introBeforeName, introAfterName = ''] = heroContent.introLine.split(highlightedName)
+  const [introBeforeStartExpression, introAfterStartExpression = ''] =
+    introAfterName.split(expressionStart)
+  const [introBetweenExpressions, introAfterEndExpression = ''] =
+    introAfterStartExpression.split(expressionEnd)
 
   useLayoutEffect(() => {
     const image = new Image()
@@ -154,8 +160,12 @@ const HeroSection = memo(function HeroSection() {
           className="hero-intro absolute left-[5%] top-[58%] z-30 max-w-[420px] -translate-y-1/2 text-left text-[clamp(16px,1.2vw,20px)] font-medium tracking-[-0.01em] text-[#666666]"
         >
           {introBeforeName}
-          <span className="font-bold text-[#0F0F0F]">{highlightedName}</span>
-          {introAfterName}
+          <span className="hero-intro-name font-black text-[#0F0F0F]">{highlightedName}</span>
+          {introBeforeStartExpression}
+          <span className="hero-expression">{expressionStart}</span>
+          {introBetweenExpressions}
+          <span className="hero-expression hero-expression-positive">{expressionEnd}</span>
+          {introAfterEndExpression}
         </p>
 
         <div
@@ -284,7 +294,7 @@ const HeroSection = memo(function HeroSection() {
 
         <div
           ref={actionsRef}
-          className="hero-actions absolute left-[5%] top-[60%] z-30 flex max-w-[430px] -translate-y-1/2 pr-4 sm:top-[72%]"
+          className="hero-actions absolute left-[5%] top-[60%] z-30 flex max-w-[430px] -translate-y-1/2 pr-4 sm:top-[78%]"
         >
           <div className="flex flex-wrap items-center justify-start gap-3">
             <a

@@ -139,6 +139,25 @@ img {
   }
 }
 
+#hero .hero-intro-name {
+  display: inline-block;
+  font-size: 1.12em;
+  line-height: 1;
+}
+
+#hero .hero-expression {
+  display: inline-block;
+  margin: 0 0.12em;
+  color: #0f0f0f;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+#hero .hero-expression-positive {
+  color: #c87b00;
+}
+
 @media (max-width: 768px) {
   #timeline.about-section,
   #projects.projects-section,
